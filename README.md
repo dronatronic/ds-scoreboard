@@ -40,13 +40,13 @@ DS Scoreboard est conçu pour le **broadcast live** :
 ## 🔒 Accès au logiciel
 Le logiciel **n’est pas disponible en téléchargement public**.
 
-L’accès est fourni **sur demande** aux :
+L’accès est fourni **sur commande avec le pack complet sur un site dédié** aux :
 - clubs,
 - organisateurs,
 - fédérations,
 - événements Drone Soccer.
 
-👉 Contact : **via message GitHub (Issues ou DM)**
+👉 Contact : dronatronic@gmail.com
 
 ---
 
