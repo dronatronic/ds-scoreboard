@@ -19,7 +19,6 @@ arbitrage, scoreboard, overlays OBS et affichage live, pensée pour les événem
 ---
 
 ## 📸 Aperçu
-*(captures à placer dans docs/screenshots/)*
 
 ![Scoreboard](docs/screenshots/app/pc-01.png)
 ![Matches](docs/screenshots/app/pc-04.png)
