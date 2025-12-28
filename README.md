@@ -1,6 +1,6 @@
 # DS Scoreboard
 
-**DS Scoreboard** est une plateforme complète de gestion de compétitions **Drone Soccer** :  
+**DS Scoreboard** est une plateforme complète de gestion de compétitions **Drone Soccer F9A-B** :  
 arbitrage, scoreboard, overlays OBS et affichage live, pensée pour les événements réels.
 
 ---
