@@ -21,10 +21,10 @@ arbitrage, scoreboard, overlays OBS et affichage live, pensée pour les événem
 ## 📸 Aperçu
 *(captures à placer dans docs/screenshots/)*
 
-![Scoreboard](docs/screenshots/scoreboard.png)
-![Bracket](docs/screenshots/bracket.png)
-![OBS Overlay](docs/screenshots/obs-scoreboard.png)
-![Penalty](docs/screenshots/penalty.png)
+![Scoreboard](docs/screenshots/app/pc-01.png)
+![Matches](docs/screenshots/app/pc-03.png)
+![OBS scoreboard](docs/screenshots/obs/obs-01.png)
+![OBS Groups](docs/screenshots/obs/obs-02.png)
 
 ---
 
