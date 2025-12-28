@@ -119,12 +119,6 @@ a:hover{text-decoration:underline}
   color:var(--muted);
   line-height:1.65;
 }
-.hr{
-  height:1px;
-  background:rgba(255,255,255,.08);
-  border:0;
-  margin:20px 0 0;
-}
 footer{
   text-align:center;
   padding:20px;
@@ -192,7 +186,7 @@ footer{
   <div class="nav">
     <a class="btn" href="#features" data-i18n="nav.features"></a>
     <a class="btn" href="#fai" data-i18n="nav.fai"></a>
-    <a class="btn" href="#pc" data-i18n="nav.pc"></a>
+    <a class="btn" href="#app" data-i18n="nav.app"></a>
     <a class="btn" href="#obs" data-i18n="nav.obs"></a>
     <a class="btn" href="#video" data-i18n="nav.video"></a>
     <a class="btn" href="#pack" data-i18n="nav.pack"></a>
@@ -214,22 +208,37 @@ footer{
       <h3 data-i18n="features.event.h"></h3>
       <p data-i18n="features.event.p"></p>
     </div>
+
+    <div class="card">
+      <h3 data-i18n="features.teamsRange.h"></h3>
+      <p data-i18n="features.teamsRange.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.referees.h"></h3>
+      <p data-i18n="features.referees.p"></p>
+    </div>
+
     <div class="card">
       <h3 data-i18n="features.tp.h"></h3>
       <p data-i18n="features.tp.p"></p>
     </div>
+
     <div class="card">
       <h3 data-i18n="features.groups.h"></h3>
       <p data-i18n="features.groups.p"></p>
     </div>
+
     <div class="card">
       <h3 data-i18n="features.ko.h"></h3>
       <p data-i18n="features.ko.p"></p>
     </div>
+
     <div class="card">
       <h3 data-i18n="features.obs.h"></h3>
       <p data-i18n="features.obs.p"></p>
     </div>
+
     <div class="card">
       <h3 data-i18n="features.goals.h"></h3>
       <p data-i18n="features.goals.p"></p>
@@ -256,19 +265,19 @@ footer{
     <p class="small" data-i18n="fai.p2"></p>
   </div>
 
-  <h2 class="section-title" id="pc" data-i18n="pc.title"></h2>
+  <h2 class="section-title" id="app" data-i18n="app.title"></h2>
   <p class="small" data-i18n="gallery.hint"></p>
-  <div class="gallery" id="pcGallery">
-    <figure><img src="screenshots/app/pc-01.png" alt="PC 01"><figcaption>PC 01</figcaption></figure>
-    <figure><img src="screenshots/app/pc-02.png" alt="PC 02"><figcaption>PC 02</figcaption></figure>
-    <figure><img src="screenshots/app/pc-03.png" alt="PC 03"><figcaption>PC 03</figcaption></figure>
-    <figure><img src="screenshots/app/pc-04.png" alt="PC 04"><figcaption>PC 04</figcaption></figure>
-    <figure><img src="screenshots/app/pc-05.png" alt="PC 05"><figcaption>PC 05</figcaption></figure>
-    <figure><img src="screenshots/app/pc-06.png" alt="PC 06"><figcaption>PC 06</figcaption></figure>
-    <figure><img src="screenshots/app/pc-07.png" alt="PC 07"><figcaption>PC 07</figcaption></figure>
-    <figure><img src="screenshots/app/pc-08.png" alt="PC 08"><figcaption>PC 08</figcaption></figure>
-    <figure><img src="screenshots/app/pc-09.png" alt="PC 09"><figcaption>PC 09</figcaption></figure>
-    <figure><img src="screenshots/app/pc-10.png" alt="PC 10"><figcaption>PC 10</figcaption></figure>
+  <div class="gallery" id="appGallery">
+    <figure><img src="screenshots/app/app-01.png" alt="APP 01"><figcaption>APP 01</figcaption></figure>
+    <figure><img src="screenshots/app/app-02.png" alt="APP 02"><figcaption>APP 02</figcaption></figure>
+    <figure><img src="screenshots/app/app-03.png" alt="APP 03"><figcaption>APP 03</figcaption></figure>
+    <figure><img src="screenshots/app/app-04.png" alt="APP 04"><figcaption>APP 04</figcaption></figure>
+    <figure><img src="screenshots/app/app-05.png" alt="APP 05"><figcaption>APP 05</figcaption></figure>
+    <figure><img src="screenshots/app/app-06.png" alt="APP 06"><figcaption>APP 06</figcaption></figure>
+    <figure><img src="screenshots/app/app-07.png" alt="APP 07"><figcaption>APP 07</figcaption></figure>
+    <figure><img src="screenshots/app/app-08.png" alt="APP 08"><figcaption>APP 08</figcaption></figure>
+    <figure><img src="screenshots/app/app-09.png" alt="APP 09"><figcaption>APP 09</figcaption></figure>
+    <figure><img src="screenshots/app/app-10.png" alt="APP 10"><figcaption>APP 10</figcaption></figure>
   </div>
 
   <h2 class="section-title" id="obs" data-i18n="obs.title"></h2>
@@ -322,7 +331,6 @@ footer{
 
 <footer>DS Scoreboard — Drone Soccer Competition Platform</footer>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <div class="lightbox-inner">
     <div class="lightbox-top">
@@ -339,7 +347,7 @@ const T = {
     "hero": "Plateforme complète de gestion de compétitions <b>Drone Soccer</b> : tournoi, arbitrage, streaming OBS et animations des buts.",
     "nav.features":"Fonctionnalités",
     "nav.fai":"Compatibilité FAI",
-    "nav.pc":"Screens PC",
+    "nav.app":"Screens App",
     "nav.obs":"Screens OBS",
     "nav.video":"Vidéo",
     "nav.pack":"Pack inclus",
@@ -349,14 +357,25 @@ const T = {
     "features.title":"Fonctionnalités",
     "features.event.h":"🏁 Gestion d’événements",
     "features.event.p":"Gestion de tournoi complète : phases de groupes, qualifications, suivi des matchs et résultats.",
+
+    "features.teamsRange.h":"👥 Gestion de 4 à 24 équipes",
+    "features.teamsRange.p":"Configuration rapide des formats de tournoi de 4 à 24 équipes, avec phases adaptées.",
+
+    "features.referees.h":"🧑‍⚖️ Arbitrage : 3 arbitres",
+    "features.referees.p":"Organisation simple : 2 arbitres de but + 1 arbitre de table. Aucun arbitre supplémentaire nécessaire.",
+
     "features.tp.h":"👥 Équipes & 🧑‍✈️ Pilotes",
     "features.tp.p":"Gestion des équipes et des pilotes pour une compétition claire et un affichage propre.",
+
     "features.groups.h":"🧩 Phase de groupes",
     "features.groups.p":"Génération, matchs, classement et qualification selon la structure de l’événement.",
+
     "features.ko.h":"🏆 Phase éliminatoire",
     "features.ko.p":"Bracket KO : progression, résultats et affichage des phases finales.",
+
     "features.obs.h":"📺 Streaming via OBS",
     "features.obs.p":"Overlays dédiés : score, prochain match, break, finales, penalty… prêts pour le live.",
+
     "features.goals.h":"💡 Animations des buts",
     "features.goals.p":"Animations LED synchronisées pour renforcer l’expérience en match.",
 
@@ -367,7 +386,7 @@ const T = {
     "fai.link3label":"F9A Drone Soccer Rules (PDF) : ",
     "fai.p2":"Les références ci-dessus permettent de consulter les règles officielles, y compris les sous-classes F9A-A et F9A-B.",
 
-    "pc.title":"Screenshots — Logiciel PC (arbitrage)",
+    "app.title":"Screenshots — Logiciel (interface PC / arbitrage)",
     "obs.title":"Screenshots — Overlays OBS (diffusion live)",
     "gallery.hint":"Clique sur une image pour l’afficher en plein écran.",
 
@@ -399,7 +418,7 @@ const T = {
     "hero":"All-in-one <b>Drone Soccer</b> competition platform: tournament management, refereeing, OBS broadcast overlays and goal animations.",
     "nav.features":"Features",
     "nav.fai":"FAI compliance",
-    "nav.pc":"PC screenshots",
+    "nav.app":"App screenshots",
     "nav.obs":"OBS screenshots",
     "nav.video":"Video",
     "nav.pack":"Included kit",
@@ -409,25 +428,36 @@ const T = {
     "features.title":"Features",
     "features.event.h":"🏁 Event management",
     "features.event.p":"Complete tournament management: group stages, qualification, match tracking and results.",
+
+    "features.teamsRange.h":"👥 Supports 4 to 24 teams",
+    "features.teamsRange.p":"Fast setup for tournament formats from 4 to 24 teams, with adapted stages.",
+
+    "features.referees.h":"🧑‍⚖️ Refereeing: only 3 referees",
+    "features.referees.p":"Simple setup: 2 goal referees + 1 table referee. No extra staff required.",
+
     "features.tp.h":"👥 Teams & 🧑‍✈️ Pilots",
     "features.tp.p":"Team and pilot management for clear competition tracking and clean display.",
+
     "features.groups.h":"🧩 Group stage",
     "features.groups.p":"Generation, matches, rankings and qualification based on event structure.",
+
     "features.ko.h":"🏆 Knockout stage",
     "features.ko.p":"KO bracket: progression, results and finals display.",
+
     "features.obs.h":"📺 OBS streaming",
     "features.obs.p":"Dedicated overlays: score, next match, break, finals, penalty… ready for live production.",
+
     "features.goals.h":"💡 Goal animations",
     "features.goals.p":"Synchronized LED effects to enhance match experience.",
 
     "fai.title":"FAI compliance (Drone Soccer F9A / F9A-A / F9A-B)",
-    "fai.p1":"DS Scoreboard is designed to be compatible with FAI (World Air Sports Federation) Drone Soccer rules (F9A).",
+    "fai.p1":"DS Scoreboard is designed to be compatible with FAI Drone Soccer rules (F9A).",
     "fai.link1label":"FAI Drone Soccer rules : ",
     "fai.link2label":"FAI Sporting Code — Volume F9 (PDF) : ",
     "fai.link3label":"F9A Drone Soccer Rules (PDF) : ",
     "fai.p2":"The references above provide the official rules, including F9A-A and F9A-B subclasses.",
 
-    "pc.title":"Screenshots — PC software (refereeing)",
+    "app.title":"Screenshots — Software (PC / refereeing interface)",
     "obs.title":"Screenshots — OBS overlays (live broadcast)",
     "gallery.hint":"Click an image to view it fullscreen.",
 
@@ -470,7 +500,7 @@ function applyLang(lang){
   document.getElementById("btnFR").classList.toggle("active", lang==="fr");
   document.getElementById("btnEN").classList.toggle("active", lang==="en");
 
-  document.getElementById("lbHint").textContent = (lang === "en") ? T.en["lb.hint"] : T.fr["lb.hint"];
+  document.getElementById("lbHint").textContent = T[lang]["lb.hint"];
 }
 
 document.getElementById("btnFR").onclick = ()=>applyLang("fr");
