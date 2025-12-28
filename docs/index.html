@@ -12,6 +12,7 @@
     --muted:rgba(233,238,247,.72);
     --border:rgba(255,255,255,.10);
     --shadow:0 10px 30px rgba(0,0,0,.35);
+    --accent:rgba(0,170,255,.28);
   }
   *{box-sizing:border-box}
   body{
@@ -24,29 +25,75 @@
     color:var(--text);
   }
   header{
-    padding:50px 20px 26px;
+    padding:58px 20px 26px;
     text-align:center;
+    position:relative;
   }
-  .logo{
-    max-width:180px;
-    margin-bottom:18px;
-  }
-  h1{margin:0 0 10px; font-size:3rem}
+  h1{margin:0 0 10px; font-size:3rem; letter-spacing:.5px}
   .sub{
     max-width:900px;
     margin:0 auto;
     color:var(--muted);
-    font-size:1.1rem;
-    line-height:1.5;
+    font-size:1.12rem;
+    line-height:1.55;
   }
   .wrap{max-width:1120px; margin:0 auto; padding:0 20px 60px}
+  .topbar{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:16px;
+  }
+  .btn{
+    display:inline-block;
+    padding:10px 14px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    text-decoration:none;
+    color:var(--text);
+    background:rgba(255,255,255,.04);
+    cursor:pointer;
+    user-select:none;
+  }
+  .btn:hover{background:rgba(255,255,255,.08)}
+  .btn.active{
+    border-color:rgba(0,170,255,.55);
+    box-shadow:0 0 0 3px rgba(0,170,255,.12) inset;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:16px;
+    margin-top:14px;
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px 18px 16px;
+    box-shadow:var(--shadow);
+  }
+  .card h2{margin:0 0 10px; font-size:1.15rem}
+  .card p{margin:0; color:var(--muted); line-height:1.45}
+  .tag{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    color:var(--muted);
+    font-size:.9rem;
+    background:rgba(0,170,255,.06);
+  }
   .section-title{
     margin:44px 0 12px;
     font-size:1.5rem;
+    letter-spacing:.2px;
   }
   .shots{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
     gap:14px;
   }
   .shot{
@@ -63,10 +110,16 @@
     display:block;
     background:rgba(255,255,255,.03);
   }
-  .cap{
-    padding:10px 12px 12px;
+  .shot .cap{
+    padding:12px 12px 14px;
     color:var(--muted);
     font-size:.95rem;
+  }
+  .list{
+    margin:10px 0 0;
+    padding:0 0 0 18px;
+    color:var(--muted);
+    line-height:1.55;
   }
   footer{
     text-align:center;
@@ -74,44 +127,123 @@
     color:rgba(233,238,247,.55);
     border-top:1px solid rgba(255,255,255,.08);
   }
+  a.link{color:var(--text); text-decoration:underline; text-decoration-color:rgba(0,170,255,.4)}
+  a.link:hover{text-decoration-color:rgba(0,170,255,.8)}
 </style>
 </head>
 <body>
 
 <header>
-  <img src="assets/DS.png" alt="DS Scoreboard logo" class="logo">
   <h1>DS Scoreboard</h1>
-  <div class="sub">
-    Plateforme complète pour la gestion de compétitions <strong>Drone Soccer</strong> :<br>
-    logiciel de gestion, arbitrage, streaming OBS et animations des buts.
+
+  <div class="sub" data-i18n="hero">
+    Plateforme complète pour la gestion de compétitions <strong>Drone Soccer</strong> : tournoi, arbitrage, streaming OBS et animations des buts.
+  </div>
+
+  <div class="topbar">
+    <a class="btn" href="#features" data-i18n="nav.features">Fonctionnalités</a>
+    <a class="btn" href="#pack" data-i18n="nav.pack">Pack inclus</a>
+    <a class="btn" href="#screens" data-i18n="nav.screens">Aperçu</a>
+    <a class="btn" href="#access" data-i18n="nav.access">Accès</a>
+    <a class="btn" href="#contact" data-i18n="nav.contact">Contact</a>
+  </div>
+
+  <div class="topbar" style="margin-top:14px">
+    <span class="btn active" id="btnFR">FR</span>
+    <span class="btn" id="btnEN">EN</span>
   </div>
 </header>
 
 <div class="wrap">
 
-  <!-- LOGICIEL PC -->
-  <h2 class="section-title">Logiciel de gestion (PC)</h2>
-  <div class="shots">
-    <div class="shot"><img src="screenshots/app/app_1.png"><div class="cap">Gestion – écran 1</div></div>
-    <div class="shot"><img src="screenshots/app/app_2.png"><div class="cap">Gestion – écran 2</div></div>
-    <div class="shot"><img src="screenshots/app/app_3.png"><div class="cap">Gestion – écran 3</div></div>
-    <div class="shot"><img src="screenshots/app/app_4.png"><div class="cap">Gestion – écran 4</div></div>
-    <div class="shot"><img src="screenshots/app/app_5.png"><div class="cap">Gestion – écran 5</div></div>
-    <div class="shot"><img src="screenshots/app/app_6.png"><div class="cap">Gestion – écran 6</div></div>
-    <div class="shot"><img src="screenshots/app/app_7.png"><div class="cap">Gestion – écran 7</div></div>
-    <div class="shot"><img src="screenshots/app/app_8.png"><div class="cap">Gestion – écran 8</div></div>
-    <div class="shot"><img src="screenshots/app/app_9.png"><div class="cap">Gestion – écran 9</div></div>
-    <div class="shot"><img src="screenshots/app/app_10.png"><div class="cap">Gestion – écran 10</div></div>
+  <h2 class="section-title" id="features" data-i18n="features.title">Fonctionnalités</h2>
+  <div class="grid">
+    <div class="card">
+      <h2 data-i18n="features.event.title">🏁 Gestion d’événements</h2>
+      <p data-i18n="features.event.desc">Structure complète de compétition : configuration, déroulé et suivi des matchs.</p>
+      <span class="tag" data-i18n="features.event.tag">Tournoi prêt terrain</span>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="features.teamsPilots.title">👥 Équipes & 🧑‍✈️ Pilotes</h2>
+      <p data-i18n="features.teamsPilots.desc">Gestion des équipes et des pilotes pour un suivi clair et un affichage propre.</p>
+      <span class="tag" data-i18n="features.teamsPilots.tag">Gestion centralisée</span>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="features.groups.title">🧩 Phases de groupe</h2>
+      <p data-i18n="features.groups.desc">Phase de groupes + qualification : génération, suivi des matchs et classements.</p>
+      <span class="tag" data-i18n="features.groups.tag">Group stage</span>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="features.ko.title">🏆 Phase éliminatoire</h2>
+      <p data-i18n="features.ko.desc">Gestion du bracket KO : progression, résultats et affichage des phases finales.</p>
+      <span class="tag" data-i18n="features.ko.tag">Knockout</span>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="features.obs.title">📺 Streaming via OBS</h2>
+      <p data-i18n="features.obs.desc">Overlays dédiés pour diffuser proprement : score, prochains matchs, break, finales…</p>
+      <span class="tag" data-i18n="features.obs.tag">Broadcast</span>
+    </div>
+
+    <div class="card">
+      <h2 data-i18n="features.goals.title">💡 Animations des buts</h2>
+      <p data-i18n="features.goals.desc">Animations et effets lumineux synchronisés pour renforcer l’expérience en match.</p>
+      <span class="tag" data-i18n="features.goals.tag">LED Goals</span>
+    </div>
   </div>
 
-  <!-- OBS -->
-  <h2 class="section-title">Overlays & diffusion OBS</h2>
+  <h2 class="section-title" id="pack" data-i18n="pack.title">Pack DS Scoreboard inclus</h2>
+  <div class="card">
+    <p data-i18n="pack.intro">
+      Le pack DS Scoreboard inclut tout le nécessaire pour démarrer un événement Drone Soccer.
+    </p>
+    <ul class="list">
+      <li data-i18n="pack.items.controllers">2 télécommandes (rouge / bleue) rechargeables en USB-C</li>
+      <li data-i18n="pack.items.router">1 routeur dédié</li>
+      <li data-i18n="pack.items.psu">1 bloc d’alimentation 220V pour les buts</li>
+      <li data-i18n="pack.items.goals">2 buts équipés de LED</li>
+      <li data-i18n="pack.items.cables">Câbles pour relier le bloc d’alimentation aux buts</li>
+      <li data-i18n="pack.items.usb">1 clé USB contenant le logiciel</li>
+    </ul>
+    <span class="tag" data-i18n="pack.tag">Pack prêt à l’emploi</span>
+  </div>
+
+  <h2 class="section-title" id="screens" data-i18n="screens.title">Aperçu (images)</h2>
   <div class="shots">
-    <div class="shot"><img src="screenshots/obs/obs_1.png"><div class="cap">Overlay OBS – écran 1</div></div>
-    <div class="shot"><img src="screenshots/obs/obs_2.png"><div class="cap">Overlay OBS – écran 2</div></div>
-    <div class="shot"><img src="screenshots/obs/obs_3.png"><div class="cap">Overlay OBS – écran 3</div></div>
-    <div class="shot"><img src="screenshots/obs/obs_4.png"><div class="cap">Overlay OBS – écran 4</div></div>
-    <div class="shot"><img src="screenshots/obs/obs_5.png"><div class="cap">Overlay OBS – écran 5</div></div>
+    <div class="shot">
+      <img src="screenshots/scoreboard.png" alt="Scoreboard DS Scoreboard">
+      <div class="cap" data-i18n="screens.scoreboard">Scoreboard arbitre — affichage principal.</div>
+    </div>
+    <div class="shot">
+      <img src="screenshots/obs-overlay.png" alt="Overlays OBS DS Scoreboard">
+      <div class="cap" data-i18n="screens.obs">Overlays OBS — diffusion live (score / next match / break…).</div>
+    </div>
+    <div class="shot">
+      <img src="screenshots/goals-led.png" alt="Animations des buts">
+      <div class="cap" data-i18n="screens.goals">Animations des buts — effets lumineux synchronisés.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="access" data-i18n="access.title">Accès</h2>
+  <div class="card">
+    <h2 data-i18n="access.h">🔒 Logiciel non téléchargeable publiquement</h2>
+    <p data-i18n="access.p">
+      DS Scoreboard n’est pas disponible en téléchargement public.<br>
+      Il est uniquement disponible <strong>à la vente</strong>.
+    </p>
+    <span class="tag" data-i18n="access.tag">Contact pour devis / démo</span>
+  </div>
+
+  <h2 class="section-title" id="contact" data-i18n="contact.title">Contact</h2>
+  <div class="card">
+    <h2 data-i18n="contact.h">🌐 Dronatronic</h2>
+    <p>
+      <span data-i18n="contact.p">Pour une démo, un devis ou une intégration événement :</span><br>
+      <a class="link" href="https://dronatronic.com" target="_blank" rel="noopener">dronatronic.com</a>
+    </p>
   </div>
 
 </div>
@@ -119,6 +251,144 @@
 <footer>
   DS Scoreboard — Drone Soccer Competition Platform
 </footer>
+
+<script>
+  const T = {
+    fr: {
+      "hero": "Plateforme complète pour la gestion de compétitions <strong>Drone Soccer</strong> : tournoi, arbitrage, streaming OBS et animations des buts.",
+      "nav.features":"Fonctionnalités",
+      "nav.pack":"Pack inclus",
+      "nav.screens":"Aperçu",
+      "nav.access":"Accès",
+      "nav.contact":"Contact",
+
+      "features.title":"Fonctionnalités",
+      "features.event.title":"🏁 Gestion d’événements",
+      "features.event.desc":"Structure complète de compétition : configuration, déroulé et suivi des matchs.",
+      "features.event.tag":"Tournoi prêt terrain",
+
+      "features.teamsPilots.title":"👥 Équipes & 🧑‍✈️ Pilotes",
+      "features.teamsPilots.desc":"Gestion des équipes et des pilotes pour un suivi clair et un affichage propre.",
+      "features.teamsPilots.tag":"Gestion centralisée",
+
+      "features.groups.title":"🧩 Phases de groupe",
+      "features.groups.desc":"Phase de groupes + qualification : génération, suivi des matchs et classements.",
+      "features.groups.tag":"Group stage",
+
+      "features.ko.title":"🏆 Phase éliminatoire",
+      "features.ko.desc":"Gestion du bracket KO : progression, résultats et affichage des phases finales.",
+      "features.ko.tag":"Knockout",
+
+      "features.obs.title":"📺 Streaming via OBS",
+      "features.obs.desc":"Overlays dédiés pour diffuser proprement : score, prochains matchs, break, finales…",
+      "features.obs.tag":"Broadcast",
+
+      "features.goals.title":"💡 Animations des buts",
+      "features.goals.desc":"Animations et effets lumineux synchronisés pour renforcer l’expérience en match.",
+      "features.goals.tag":"LED Goals",
+
+      "pack.title":"Pack DS Scoreboard inclus",
+      "pack.intro":"Le pack DS Scoreboard inclut tout le nécessaire pour démarrer un événement Drone Soccer.",
+      "pack.items.controllers":"2 télécommandes (rouge / bleue) rechargeables en USB-C",
+      "pack.items.router":"1 routeur dédié",
+      "pack.items.psu":"1 bloc d’alimentation 220V pour les buts",
+      "pack.items.goals":"2 buts équipés de LED",
+      "pack.items.cables":"Câbles pour relier le bloc d’alimentation aux buts",
+      "pack.items.usb":"1 clé USB contenant le logiciel",
+      "pack.tag":"Pack prêt à l’emploi",
+
+      "screens.title":"Aperçu (images)",
+      "screens.scoreboard":"Scoreboard arbitre — affichage principal.",
+      "screens.obs":"Overlays OBS — diffusion live (score / next match / break…).",
+      "screens.goals":"Animations des buts — effets lumineux synchronisés.",
+
+      "access.title":"Accès",
+      "access.h":"🔒 Logiciel non téléchargeable publiquement",
+      "access.p":"DS Scoreboard n’est pas disponible en téléchargement public.<br>Il est uniquement disponible <strong>à la vente</strong>.",
+      "access.tag":"Contact pour devis / démo",
+
+      "contact.title":"Contact",
+      "contact.h":"🌐 Dronatronic",
+      "contact.p":"Pour une démo, un devis ou une intégration événement :"
+    },
+    en: {
+      "hero":"All-in-one platform for <strong>Drone Soccer</strong> competitions: tournament management, refereeing, OBS streaming overlays and goal animations.",
+      "nav.features":"Features",
+      "nav.pack":"Included kit",
+      "nav.screens":"Gallery",
+      "nav.access":"Access",
+      "nav.contact":"Contact",
+
+      "features.title":"Features",
+      "features.event.title":"🏁 Event management",
+      "features.event.desc":"Complete competition structure: setup, match flow and live tracking.",
+      "features.event.tag":"Field-ready",
+
+      "features.teamsPilots.title":"👥 Teams & 🧑‍✈️ Pilots",
+      "features.teamsPilots.desc":"Manage teams and pilots for clear tracking and clean on-screen display.",
+      "features.teamsPilots.tag":"Centralized",
+
+      "features.groups.title":"🧩 Group stage",
+      "features.groups.desc":"Group stage + qualification: generation, match tracking and rankings.",
+      "features.groups.tag":"Group stage",
+
+      "features.ko.title":"🏆 Knockout stage",
+      "features.ko.desc":"Full KO bracket management: progression, results and final stage display.",
+      "features.ko.tag":"Knockout",
+
+      "features.obs.title":"📺 OBS streaming",
+      "features.obs.desc":"Dedicated overlays for broadcast: score, next match, break, finals…",
+      "features.obs.tag":"Broadcast",
+
+      "features.goals.title":"💡 Goal animations",
+      "features.goals.desc":"Synchronized lighting effects to enhance the match experience.",
+      "features.goals.tag":"LED Goals",
+
+      "pack.title":"DS Scoreboard kit included",
+      "pack.intro":"The DS Scoreboard kit includes everything you need to start a Drone Soccer event.",
+      "pack.items.controllers":"2 controllers (red / blue), USB-C rechargeable",
+      "pack.items.router":"1 dedicated router",
+      "pack.items.psu":"1 x 220V power supply unit for the goals",
+      "pack.items.goals":"2 LED goals",
+      "pack.items.cables":"Cables to connect the power supply unit to the goals",
+      "pack.items.usb":"1 USB drive with the software",
+      "pack.tag":"Ready-to-use kit",
+
+      "screens.title":"Gallery",
+      "screens.scoreboard":"Referee scoreboard — main display.",
+      "screens.obs":"OBS overlays — live broadcast (score / next match / break…).",
+      "screens.goals":"Goal animations — synchronized lighting effects.",
+
+      "access.title":"Access",
+      "access.h":"🔒 Not publicly downloadable",
+      "access.p":"DS Scoreboard is not available for public download.<br>It is available <strong>for purchase only</strong>.",
+      "access.tag":"Contact for demo / quote",
+
+      "contact.title":"Contact",
+      "contact.h":"🌐 Dronatronic",
+      "contact.p":"For a demo, a quote or event integration:"
+    }
+  };
+
+  function setLang(lang){
+    document.documentElement.lang = (lang === "en") ? "en" : "fr";
+    localStorage.setItem("ds_lang", lang);
+
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      const val = T[lang]?.[key];
+      if (val) el.innerHTML = val;
+    });
+
+    document.getElementById("btnFR").classList.toggle("active", lang==="fr");
+    document.getElementById("btnEN").classList.toggle("active", lang==="en");
+  }
+
+  document.getElementById("btnFR").onclick = ()=>setLang("fr");
+  document.getElementById("btnEN").onclick = ()=>setLang("en");
+
+  setLang(localStorage.getItem("ds_lang") || "fr");
+</script>
 
 </body>
 </html>
