@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Spinbird Ø200mm – Drone Soccer | Dronatronic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Drone Soccer Spinbird Ø200mm – kit robuste et léger pour entraînement, loisir et compétition. Compatible FAI F9A-B." />
 
   <style>
     :root{
@@ -60,6 +59,7 @@
       background:linear-gradient(135deg,var(--cyan),var(--green));
       color:#022c22;
       box-shadow:0 10px 30px rgba(34,211,238,.45);
+      cursor:pointer;
     }
     .btn:hover{filter:brightness(1.1)}
 
@@ -149,15 +149,22 @@
 
     /* GALLERY */
     .gallery{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
     }
-    @media(max-width:900px){.gallery{grid-template-columns:1fr}}
+    .gallery .large{
+      grid-column:1 / -1;
+    }
     .shot{
       border:1px solid var(--line);
       border-radius:16px;
       overflow:hidden;
       background:#020617;
+      cursor:zoom-in;
+      transition:transform .2s ease;
     }
+    .shot:hover{transform:scale(1.02)}
     .shot img{width:100%;display:block}
     .cap{
       padding:8px 10px;
@@ -206,6 +213,24 @@
       font-size:13px;
       margin-top:28px;
       line-height:1.6;
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+      cursor:zoom-out;
+    }
+    .lightbox img{
+      max-width:92%;
+      max-height:92%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
     }
   </style>
 </head>
@@ -287,7 +312,7 @@
           <div class="note">Frais de port non inclus</div>
         </div>
         <a class="btn"
-           href="mailto:dronatronic@gmail.com?subject=Commande%20Drone%20Soccer%20Spinbird%20Ø200mm&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20ou%20commander%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0ACouleur%20:%20Bleu%20/%20Rouge%0A%0AMerci.">
+           href="mailto:dronatronic@gmail.com?subject=Commande%20Drone%20Soccer%20Spinbird%20Ø200mm">
           📩 Commander / Devis
         </a>
       </div>
@@ -298,22 +323,33 @@
       <div class="pad">
         <h2>Photos</h2>
         <p class="subtitle">
-          Kits disponibles en <strong>bleu</strong> et <strong>rouge</strong>,
-          avec un exemple de drone <strong>assemblé</strong>.
+          Exemple de drone assemblé (mise en avant), puis kits et détails.
         </p>
 
         <div class="gallery">
-          <div class="shot">
-            <img src="images/blue.png" alt="Kit Spinbird bleu">
+          <div class="shot large" onclick="openLightbox('images/white.png')">
+            <img src="images/white.png" alt="Drone assemblé">
+            <div class="cap">Drone assemblé</div>
+          </div>
+
+          <div class="shot" onclick="openLightbox('images/white1.png')">
+            <img src="images/white1.png" alt="Drone assemblé – vue 2">
+            <div class="cap">Vue détaillée</div>
+          </div>
+
+          <div class="shot" onclick="openLightbox('images/white2.png')">
+            <img src="images/white2.png" alt="Drone assemblé – vue 3">
+            <div class="cap">Vue détaillée</div>
+          </div>
+
+          <div class="shot" onclick="openLightbox('images/blue.png')">
+            <img src="images/blue.png" alt="Kit bleu">
             <div class="cap">Kit bleu</div>
           </div>
-          <div class="shot">
-            <img src="images/red.png" alt="Kit Spinbird rouge">
+
+          <div class="shot" onclick="openLightbox('images/red.png')">
+            <img src="images/red.png" alt="Kit rouge">
             <div class="cap">Kit rouge</div>
-          </div>
-          <div class="shot">
-            <img src="images/white.png" alt="Drone Spinbird assemblé">
-            <div class="cap">Drone assemblé</div>
           </div>
         </div>
       </div>
@@ -321,45 +357,29 @@
 
   </div>
 
-  <!-- DETAILS -->
-  <div class="grid2">
-    <div class="card">
-      <div class="pad">
-        <h2>Contenu du kit</h2>
-        <ul>
-          <li>Sphère Ø200 mm</li>
-          <li>Frame carbone <strong>3 mm</strong></li>
-          <li>Support LiPo carbone <strong>2 mm</strong></li>
-          <li>Visserie + entretoises</li>
-          <li>Jonc carbone</li>
-          <li>Fixation frame / sphère en TPU</li>
-          <li>Support LED inclus</li>
-          <li><strong>Strap LiPo offert</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="pad">
-        <h2>Assemblage</h2>
-        <p class="subtitle">
-          Assemblage simple et robuste par <strong>jonc carbone</strong> et
-          <strong>gaine thermorétractable</strong>.
-        </p>
-        <ul>
-          <li>Montage propre et durable</li>
-          <li>Maintenance facilitée</li>
-          <li>Adapté à un usage intensif en club</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <div class="footer">
     © Dronatronic — Drone Soccer & DS Scoreboard<br>
-    Solutions complètes clubs : drones, buts LED, scoreboard, écrans & OBS.
+    Solutions clubs : drones, buts LED, scoreboard, écrans & OBS.
   </div>
 
 </div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src){
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lb.style.display = 'flex';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
 </body>
 </html>
