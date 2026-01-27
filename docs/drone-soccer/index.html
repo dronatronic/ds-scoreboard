@@ -4,326 +4,224 @@
   <meta charset="UTF-8" />
   <title>Spinbird Ø200mm – Drone Soccer | Dronatronic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Kit Drone Soccer Spinbird Ø200mm – frame carbone, support LiPo, support LED. Compatible règlement FAI F9A-B. Stock limité." />
 
   <style>
     :root{
       --bg:#0b0e14;
       --panel:#111827;
-      --panel2:#0f172a;
       --text:#e5e7eb;
       --muted:#a7b0c0;
       --line:#243145;
       --accent:#22d3ee;
       --accent2:#34d399;
       --warn:#fb7185;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
+      --gift:#facc15;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: radial-gradient(1200px 800px at 20% 0%, #0b2030 0%, var(--bg) 55%) fixed;
       color:var(--text);
     }
-    a{color:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
+    .wrap{max-width:1100px;margin:auto;padding:24px 18px 60px}
     .topbar{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      display:flex;justify-content:space-between;align-items:center;
       margin-bottom:18px;
     }
-    .crumbs{color:var(--muted);font-size:14px}
-    .crumbs a{color:var(--muted);text-decoration:none}
-    .crumbs a:hover{color:var(--text);text-decoration:underline}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:12px;
-      background:linear-gradient(180deg, #18233a, #0f1628);
-      border:1px solid var(--line);
-      text-decoration:none;
-      box-shadow: var(--shadow);
-      font-weight:600;
+    .lang button{
+      background:#0f172a;
       color:var(--text);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:6px 10px;
+      cursor:pointer;
+      font-weight:700;
     }
-    .btn:hover{border-color:#35507a}
+    .lang button.active{
+      background:var(--accent);
+      color:#001018;
+    }
     .hero{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns:1.1fr .9fr;
       gap:18px;
-      align-items:stretch;
-      margin-top:10px;
     }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
-    }
+    @media(max-width:900px){.hero{grid-template-columns:1fr}}
     .card{
-      background: linear-gradient(180deg, rgba(17,24,39,.92), rgba(15,23,42,.86));
+      background:linear-gradient(180deg, rgba(17,24,39,.92), rgba(15,23,42,.86));
       border:1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
-    .card-pad{padding:20px}
-    .title{
-      font-size:34px;
-      line-height:1.1;
-      margin:0 0 10px;
-      letter-spacing:-.5px;
-    }
-    .subtitle{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.5;
-    }
-    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+    .pad{padding:20px}
+    h1{font-size:34px;margin:0 0 10px}
+    h2{font-size:18px;margin:0 0 10px}
+    .subtitle{color:var(--muted);line-height:1.5}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
     .badge{
+      padding:6px 10px;border-radius:999px;
+      font-size:13px;font-weight:800;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
       display:inline-flex;align-items:center;gap:8px;
-      padding:7px 10px;border-radius:999px;
-      font-size:13px;font-weight:700;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
     }
-    .dot{width:10px;height:10px;border-radius:50%}
-    .dot.cyan{background:var(--accent)}
-    .dot.green{background:var(--accent2)}
-    .dot.pink{background:var(--warn)}
-    .pricebox{
-      display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
-      padding:18px 20px;
-      border-top:1px solid var(--line);
-      background: rgba(0,0,0,.18);
-    }
-    .price{
-      font-size:34px;font-weight:900;letter-spacing:-.5px;
-      color: #c7f9ff;
-    }
-    .small{
-      color:var(--muted);
-      font-size:13px;
-      margin-top:4px;
-    }
-    .stock{
-      display:inline-flex;align-items:center;gap:10px;
-      font-weight:800;
-      color:#ffd1d1;
-      background: rgba(251,113,133,.12);
-      border:1px solid rgba(251,113,133,.35);
-      padding:8px 12px;border-radius:12px;
-      white-space:nowrap;
-    }
-    .grid2{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:18px;
-      margin-top:18px;
-    }
-    @media (max-width: 900px){
-      .grid2{grid-template-columns:1fr}
-    }
-    .h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.2px;
-    }
-    .list{
-      margin:0;
-      padding-left:18px;
-      color:var(--text);
-      line-height:1.7;
-    }
-    .muted{color:var(--muted)}
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:12px;
-    }
-    @media (max-width: 900px){
-      .gallery{grid-template-columns:1fr}
-    }
-    .shot{
-      border:1px solid var(--line);
-      border-radius:14px;
-      overflow:hidden;
-      background:#0b1220;
-    }
-    .shot img{display:block;width:100%;height:auto}
-    .cap{
-      padding:10px 12px;
-      font-size:13px;
-      color:var(--muted);
-      border-top:1px solid var(--line);
+    .badge.gift{
+      background:rgba(250,204,21,.15);
+      border-color:rgba(250,204,21,.5);
+      color:#fde68a;
     }
     .specs{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:10px;
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;
     }
-    @media (max-width: 520px){
-      .specs{grid-template-columns:1fr}
-    }
+    @media(max-width:520px){.specs{grid-template-columns:1fr}}
     .spec{
       border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px 12px;
-      background: rgba(255,255,255,.03);
+      border-radius:12px;
+      padding:10px;
+      background:rgba(255,255,255,.03);
     }
-    .spec .k{color:var(--muted);font-size:12px;margin-bottom:6px}
+    .spec .k{font-size:12px;color:var(--muted)}
     .spec .v{font-weight:800}
-    .footer{
-      margin-top:18px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.6;
-      text-align:center;
+    .pricebox{
+      display:flex;justify-content:space-between;align-items:end;
+      padding:18px;border-top:1px solid var(--line);
+      background:rgba(0,0,0,.2);
     }
-    .cta{
-      display:flex;flex-wrap:wrap;gap:10px;margin-top:14px
-    }
-    .cta .btn2{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:12px 14px;border-radius:14px;
-      background: linear-gradient(180deg, rgba(34,211,238,.25), rgba(34,211,238,.08));
-      border:1px solid rgba(34,211,238,.35);
-      text-decoration:none;
+    .price{font-size:34px;font-weight:900;color:#c7f9ff}
+    .stock{
+      background:rgba(251,113,133,.15);
+      border:1px solid rgba(251,113,133,.4);
+      padding:8px 12px;border-radius:12px;
       font-weight:800;
     }
-    .cta .btn2:hover{border-color:rgba(34,211,238,.7)}
-    .cta .btn3{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:12px 14px;border-radius:14px;
-      background: linear-gradient(180deg, rgba(52,211,153,.25), rgba(52,211,153,.08));
-      border:1px solid rgba(52,211,153,.35);
-      text-decoration:none;
-      font-weight:800;
+    .gallery{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
     }
-    .cta .btn3:hover{border-color:rgba(52,211,153,.7)}
+    @media(max-width:900px){.gallery{grid-template-columns:1fr}}
+    .shot{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .shot img{width:100%;display:block}
+    .cap{padding:8px 10px;font-size:13px;color:var(--muted)}
+    ul{padding-left:18px;line-height:1.7}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+    .footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="topbar">
-      <div class="crumbs">
-        <a href="../">← Retour au site DS Scoreboard</a>
-        <span class="muted"> / Drone Soccer</span>
-      </div>
-      <a class="btn" href="../#obs">DS Scoreboard / OBS</a>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div>
+      <strong>Dronatronic</strong> / Drone Soccer
     </div>
+    <div class="lang">
+      <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
 
-    <div class="hero">
-      <!-- LEFT: PRODUCT -->
-      <div class="card">
-        <div class="card-pad">
-          <h1 class="title">Spinbird Ø200mm</h1>
-          <p class="subtitle">
-            Kit <strong>Drone Soccer</strong> prêt à assembler, conçu pour une utilisation club/compétition.
-            <br><span class="muted">Compatible avec le règlement <strong>FAI F9A-B</strong>.</span>
-          </p>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="card">
+      <div class="pad">
+        <h1 data-fr>Spinbird Ø200mm – Drone Soccer</h1>
+        <h1 data-en hidden>Spinbird Ø200mm – Drone Soccer</h1>
 
-          <div class="badges">
-            <div class="badge"><span class="dot cyan"></span> Ø200 mm</div>
-            <div class="badge"><span class="dot green"></span> Carbone 3 mm</div>
-            <div class="badge"><span class="dot green"></span> Support LiPo 2 mm</div>
-            <div class="badge"><span class="dot pink"></span> Stock limité</div>
-          </div>
+        <p class="subtitle" data-fr>
+          Kit Drone Soccer prêt à assembler, conçu pour l’entraînement et la compétition.
+          <br><strong>Compatible règlement FAI F9A-B.</strong>
+        </p>
+        <p class="subtitle" data-en hidden>
+          Ready-to-assemble Drone Soccer kit designed for training and competition.
+          <br><strong>Compatible with FAI F9A-B regulations.</strong>
+        </p>
 
-          <div class="specs">
-            <div class="spec">
-              <div class="k">Poids (sans LiPo)</div>
-              <div class="v">167,5 g</div>
-            </div>
-            <div class="spec">
-              <div class="k">Poids (avec LiPo Bonka 4S 650 mAh 150C)</div>
-              <div class="v">248,9 g</div>
-            </div>
-            <div class="spec">
-              <div class="k">Couleurs disponibles</div>
-              <div class="v">Rouge / Bleu</div>
-            </div>
-            <div class="spec">
-              <div class="k">Inclus</div>
-              <div class="v">Support LED + fixations TPU</div>
-            </div>
-          </div>
-
-          <div class="cta">
-            <!-- Tu peux remplacer ces liens par un mail, un formulaire, etc. -->
-            <a class="btn2" href="mailto:contact@dronatronic.fr?subject=Commande%20Spinbird%20%C3%98200mm&body=Bonjour%2C%0AJe%20souhaite%20commander%20un%20kit%20Spinbird%20%C3%98200mm%20(%20Bleu%20/%20Rouge%20).%0AMerci%20de%20me%20pr%C3%A9ciser%20les%20frais%20de%20port%20et%20la%20disponibilit%C3%A9.%0A">
-              📩 Commander / Devis
-            </a>
-            <a class="btn3" href="../">🏠 Retour accueil</a>
-          </div>
+        <div class="badges">
+          <div class="badge">Ø200 mm</div>
+          <div class="badge">Frame carbone 3 mm</div>
+          <div class="badge">Support LiPo 2 mm</div>
+          <div class="badge gift">🎁 Strap LiPo offert</div>
+          <div class="badge" style="color:#ffb4b4">Stock limité</div>
         </div>
 
-        <div class="pricebox">
-          <div>
-            <div class="price">90 €</div>
-            <div class="small">Frais de port non inclus.</div>
+        <div class="specs">
+          <div class="spec">
+            <div class="k" data-fr>Poids sans LiPo</div>
+            <div class="k" data-en hidden>Weight without LiPo</div>
+            <div class="v">167,5 g</div>
           </div>
-          <div class="stock">⚠️ Stock limité</div>
+          <div class="spec">
+            <div class="k" data-fr>Poids avec LiPo 4S 650 mAh</div>
+            <div class="k" data-en hidden>Weight with 4S 650 mAh LiPo</div>
+            <div class="v">248,9 g</div>
+          </div>
+          <div class="spec">
+            <div class="k" data-fr>Couleurs</div>
+            <div class="k" data-en hidden>Colors</div>
+            <div class="v">Rouge / Bleu</div>
+          </div>
+          <div class="spec">
+            <div class="k" data-fr>Inclus</div>
+            <div class="k" data-en hidden>Included</div>
+            <div class="v">Support LED + fixations TPU</div>
+          </div>
         </div>
       </div>
 
-      <!-- RIGHT: GALLERY -->
-      <div class="card">
-        <div class="card-pad">
-          <h2 class="h2">Photos</h2>
-          <p class="subtitle" style="margin-bottom:14px">
-            Kits disponibles en <strong>bleu</strong> et <strong>rouge</strong>, plus un exemple <strong>assemblé</strong>.
-          </p>
-
-          <div class="gallery">
-            <div class="shot">
-              <img src="images/blue.png" alt="Kit Spinbird bleu">
-              <div class="cap">Kit bleu (disponible)</div>
-            </div>
-
-            <div class="shot">
-              <img src="images/red.png" alt="Kit Spinbird rouge">
-              <div class="cap">Kit rouge (disponible)</div>
-            </div>
-
-            <div class="shot">
-              <img src="images/white.png" alt="Drone Spinbird assemblé">
-              <div class="cap">Drone assemblé (exemple)</div>
-            </div>
-          </div>
+      <div class="pricebox">
+        <div>
+          <div class="price">85 €</div>
+          <div class="subtitle" data-fr>Frais de port non inclus</div>
+          <div class="subtitle" data-en hidden>Shipping not included</div>
         </div>
+        <div class="stock" data-fr>⚠ Stock limité</div>
+        <div class="stock" data-en hidden>⚠ Limited stock</div>
       </div>
     </div>
 
-    <!-- DETAILS -->
-    <div class="grid2">
+    <!-- GALLERY -->
+    <div class="card">
+      <div class="pad">
+        <h2 data-fr>Photos</h2>
+        <h2 data-en hidden>Photos</h2>
 
-      <div class="card">
-        <div class="card-pad">
-          <h2 class="h2">Contenu du kit</h2>
-          <ul class="list">
-            <li>Sphère Ø200 mm</li>
-            <li>Frame carbone <strong>3 mm</strong></li>
-            <li>Support LiPo carbone <strong>2 mm</strong></li>
-            <li>Visserie + entretoises</li>
-            <li>Jonc carbone</li>
-            <li>Fixation frame/sphère en TPU</li>
-            <li>Support LED inclus</li>
-          </ul>
-          <p class="muted" style="margin:12px 0 0">
-            * LiPo non incluse (photo avec Bonka 4S 650 mAh 150C à titre indicatif).
-          </p>
+        <div class="gallery">
+          <div class="shot">
+            <img src="images/blue.png" alt="Kit bleu">
+            <div class="cap">Kit bleu</div>
+          </div>
+          <div class="shot">
+            <img src="images/red.png" alt="Kit rouge">
+            <div class="cap">Kit rouge</div>
+          </div>
+          <div class="shot">
+            <img src="images/white.png" alt="Drone assemblé">
+            <div class="cap" data-fr>Drone assemblé</div>
+            <div class="cap" data-en hidden>Assembled drone</div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="card-pad">
-          <h2 class="h2">Assemblage de la sphère</h2>
-          <p class="subtitle" style="margin-bottom:10px">
-            Assemblage par <strong>jonc carbone</strong> et <strong>gaine thermorétractable avec colle</strong>.
-          </p>
-          <ul class="list">
-            <li>Montage robuste et propre</li>
-            <li>Maintenance facilitée</li>
-            <li>Conçu pour usage intensif club</l
+  <!-- DETAILS -->
+  <div class="grid2">
+    <div class="card">
+      <div class="pad">
+        <h2 data-fr>Contenu du kit</h2>
+        <h2 data-en hidden>Kit contents</h2>
+        <ul>
+          <li>Sphère Ø200 mm</li>
+          <li>Frame carbone 3 mm</li>
+          <li>Support LiPo carbone 2 mm</li>
+          <li>Visserie, entretoises, jonc carbone</li>
+          <li>Fixations frame/sphère en TPU</li>
+          <li>Support LED</li>
+          <li><strong>Strap LiPo offert</strong></li>
+        </ul>
+      </div>
