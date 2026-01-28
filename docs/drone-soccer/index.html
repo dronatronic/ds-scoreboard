@@ -7,7 +7,7 @@
   <meta name="description" content="Drone Soccer Spinbird Ø200mm – kit robuste et léger pour loisir, entraînement et compétition. Compatible FAI F9A-B." />
 
   <!-- PayPal SDK EXACT demandé (hosted-buttons) -->
-  <script
+  <script 
     src="https://www.paypal.com/sdk/js?client-id=BAAONq0BmmYiinnXPP9D2ezXp99xLHdRwRERk-PKsG22Bch5WdmoVfRJ2R5rioyPKgxMeIDGngx742hVfo&components=hosted-buttons&disable-funding=venmo&currency=EUR">
   </script>
 
@@ -116,41 +116,18 @@
       color:#fecaca;
     }
 
-    /* ACTIONS */
+    /* PRICE BOX (only info + devis now) */
     .pricebox{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px;
-      border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px;border-top:1px solid var(--line);
       background:rgba(0,0,0,.25);
       gap:16px;
       flex-wrap:wrap;
     }
     .note{color:var(--muted);font-size:13px}
+    .actionstack{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
 
-    .actionstack{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      margin-left:auto;
-    }
-
-    /* PayPal hosted button wrapper (stabilise l'affichage) */
-    .paypal-wrap{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      min-width: 220px;
-    }
-    @media(max-width:900px){
-      .actionstack{justify-content:flex-start;margin-left:0}
-      .paypal-wrap{justify-content:flex-start}
-    }
-
-    /* KITS PREVIEW under actions */
+    /* KITS PREVIEW under price */
     .kits-preview{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -246,6 +223,15 @@
       border-radius:16px;
       box-shadow:0 20px 60px rgba(0,0,0,.6);
     }
+
+    /* PayPal center helper */
+    .paypal-wrap-center{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:100%;
+      padding:10px 0 0;
+    }
   </style>
 </head>
 
@@ -301,7 +287,7 @@
         </div>
       </div>
 
-      <!-- ACTIONS (PayPal + Devis) -->
+      <!-- INFO + DEVIS only -->
       <div class="pricebox">
         <div class="note">
           🇫🇷 Vente directe uniquement pour la <strong>France métropolitaine</strong> (livraison contre signature).<br>
@@ -309,12 +295,6 @@
         </div>
 
         <div class="actionstack">
-          <!-- PayPal Hosted Button (FRANCE) -->
-          <div class="paypal-wrap">
-            <div id="paypal-container-S5HXT5HMRHCS6"></div>
-          </div>
-
-          <!-- INTERNATIONAL: quote by email -->
           <a class="btn alt"
              href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20pour%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0APays%20:%0AQuantité%20:%0AClub%20/Entreprise%20:%0AAdresse%20de%20livraison%20:%0A%0AMerci.%0A">
             📩 Demander un devis (Hors France)
@@ -322,20 +302,7 @@
         </div>
       </div>
 
-      <!-- Render PayPal Hosted Button (placé juste après le container pour éviter les bugs) -->
-      <script>
-        // Sécurise l'appel si jamais le SDK met un peu de temps à charger
-        (function renderPaypal(){
-          if (!window.paypal || !paypal.HostedButtons) {
-            return setTimeout(renderPaypal, 60);
-          }
-          paypal.HostedButtons({
-            hostedButtonId: "S5HXT5HMRHCS6",
-          }).render("#paypal-container-S5HXT5HMRHCS6");
-        })();
-      </script>
-
-      <!-- Kits images under actions -->
+      <!-- Kits images under info -->
       <div class="kits-preview">
         <div class="shot" onclick="openLightbox('images/blue.png')">
           <img src="images/blue.png" alt="Kit bleu">
@@ -347,6 +314,37 @@
           <div class="cap">Kit rouge</div>
         </div>
       </div>
+
+      <!-- NEW: ORDER CARD (PayPal) -->
+      <div class="card" style="margin:22px 0 0;">
+        <div class="pad">
+          <h2>Commander (France métropolitaine)</h2>
+          <p class="subtitle" style="margin-bottom:10px">
+            Paiement sécurisé PayPal / carte bancaire. Livraison contre signature.
+          </p>
+
+          <div class="paypal-wrap-center">
+            <div id="paypal-container-S5HXT5HMRHCS6"></div>
+          </div>
+
+          <p class="note" style="margin-top:12px;text-align:center">
+            🌍 Hors France métropolitaine : utilise le bouton <strong>Demander un devis</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Render PayPal Hosted Button -->
+      <script>
+        (function renderPaypal(){
+          if (!window.paypal || !paypal.HostedButtons) {
+            return setTimeout(renderPaypal, 60);
+          }
+          paypal.HostedButtons({
+            hostedButtonId: "S5HXT5HMRHCS6",
+          }).render("#paypal-container-S5HXT5HMRHCS6");
+        })();
+      </script>
+
     </div>
 
     <!-- RIGHT: WHITE GALLERY ONLY -->
