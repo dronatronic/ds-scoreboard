@@ -104,10 +104,19 @@
       white-space:nowrap;
     }
     .btn:hover{filter:brightness(1.08)}
-    .btn.alt{
-      background:linear-gradient(135deg,#fb7185,#f97316);
-      color:#2a0a0a;
-      box-shadow:0 10px 30px rgba(251,113,133,.28);
+
+    /* ✅ Style A: devis = bouton secondaire pro (outline) */
+    .btn-outline{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .btn-outline:hover{
+      border-color: var(--cyan);
+      color: #a5f3fc;
+      background: rgba(34,211,238,.08);
+      filter:none; /* évite le brightness du .btn */
     }
 
     /* PRODUCT LAYOUT */
@@ -204,15 +213,6 @@
       .grid2{grid-template-columns:1fr}
     }
     ul{padding-left:18px;line-height:1.7;margin:0}
-    .callout{
-      margin-top:14px;
-      border:1px dashed rgba(250,204,21,.5);
-      background:rgba(250,204,21,.1);
-      padding:14px;
-      border-radius:14px;
-      color:#fde68a;
-      font-weight:600;
-    }
 
     .footer{
       text-align:center;
@@ -283,7 +283,8 @@
           </div>
 
           <div class="actions" style="margin-top:14px;">
-            <a class="btn alt"
+            <!-- ✅ Devis: style A (outline) -->
+            <a class="btn btn-outline"
               href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20pour%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0APays%20:%0AQuantité%20:%0AClub%20/Entreprise%20:%0AAdresse%20de%20livraison%20:%0A%0AMerci.%0A">
               📩 Demander un devis (Hors France)
             </a>
