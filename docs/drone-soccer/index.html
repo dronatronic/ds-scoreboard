@@ -25,8 +25,11 @@
       --shadow:0 12px 35px rgba(0,0,0,.45);
     }
     *{box-sizing:border-box}
+
+    html, body{width:100%;}
     body{
       margin:0;
+      display:block; /* évite les CSS externes qui mettraient body en flex */
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background:
         radial-gradient(900px 500px at 80% -10%, #1e40af33, transparent 60%),
@@ -35,12 +38,19 @@
       color:var(--text);
     }
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1150px;margin:auto;padding:28px 18px 70px}
+
+    /* ✅ Centrage béton, même si un CSS externe perturbe */
+    .wrap{
+      width:min(1150px, calc(100% - 36px));
+      margin:0 auto;
+      padding:28px 0 70px;
+    }
 
     /* TOP */
     .topbar{
       display:flex;justify-content:space-between;align-items:center;
       margin-bottom:24px;
+      padding:0 0;
     }
     .brand{
       font-weight:900;
@@ -116,7 +126,7 @@
       color:#fecaca;
     }
 
-    /* PRICE BOX (only info + devis now) */
+    /* INFO + DEVIS */
     .pricebox{
       display:flex;justify-content:space-between;align-items:center;
       padding:20px;border-top:1px solid var(--line);
@@ -127,7 +137,7 @@
     .note{color:var(--muted);font-size:13px}
     .actionstack{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
 
-    /* KITS PREVIEW under price */
+    /* KITS PREVIEW */
     .kits-preview{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -137,7 +147,7 @@
       background:linear-gradient(180deg, rgba(34,211,238,.10), rgba(0,0,0,.15));
     }
 
-    /* IMAGE CARDS (shared) */
+    /* IMAGE CARDS */
     .shot{
       border:1px solid var(--line);
       border-radius:16px;
@@ -156,7 +166,7 @@
       text-align:center;
     }
 
-    /* RIGHT GALLERY (white only) */
+    /* RIGHT GALLERY */
     .gallery{
       display:grid;
       grid-template-columns:1fr;
@@ -224,13 +234,22 @@
       box-shadow:0 20px 60px rgba(0,0,0,.6);
     }
 
-    /* PayPal center helper */
-    .paypal-wrap-center{
+    /* ✅ PayPal en pleine largeur */
+    .span-full{ grid-column: 1 / -1; }
+
+    /* ✅ Anti “lettres verticales” : on force une largeur mini au bouton PayPal */
+    .paypal-box{
       display:flex;
       justify-content:center;
       align-items:center;
-      width:100%;
       padding:10px 0 0;
+      width:100%;
+    }
+    #paypal-container-S5HXT5HMRHCS6{
+      min-width: 320px; /* crucial */
+    }
+    @media(max-width:420px){
+      #paypal-container-S5HXT5HMRHCS6{min-width: 260px;}
     }
   </style>
 </head>
@@ -287,7 +306,7 @@
         </div>
       </div>
 
-      <!-- INFO + DEVIS only -->
+      <!-- INFO + DEVIS -->
       <div class="pricebox">
         <div class="note">
           🇫🇷 Vente directe uniquement pour la <strong>France métropolitaine</strong> (livraison contre signature).<br>
@@ -302,7 +321,7 @@
         </div>
       </div>
 
-      <!-- Kits images under info -->
+      <!-- Kits images -->
       <div class="kits-preview">
         <div class="shot" onclick="openLightbox('images/blue.png')">
           <img src="images/blue.png" alt="Kit bleu">
@@ -314,37 +333,6 @@
           <div class="cap">Kit rouge</div>
         </div>
       </div>
-
-      <!-- NEW: ORDER CARD (PayPal) -->
-      <div class="card" style="margin:22px 0 0;">
-        <div class="pad">
-          <h2>Commander (France métropolitaine)</h2>
-          <p class="subtitle" style="margin-bottom:10px">
-            Paiement sécurisé PayPal / carte bancaire. Livraison contre signature.
-          </p>
-
-          <div class="paypal-wrap-center">
-            <div id="paypal-container-S5HXT5HMRHCS6"></div>
-          </div>
-
-          <p class="note" style="margin-top:12px;text-align:center">
-            🌍 Hors France métropolitaine : utilise le bouton <strong>Demander un devis</strong>.
-          </p>
-        </div>
-      </div>
-
-      <!-- Render PayPal Hosted Button -->
-      <script>
-        (function renderPaypal(){
-          if (!window.paypal || !paypal.HostedButtons) {
-            return setTimeout(renderPaypal, 60);
-          }
-          paypal.HostedButtons({
-            hostedButtonId: "S5HXT5HMRHCS6",
-          }).render("#paypal-container-S5HXT5HMRHCS6");
-        })();
-      </script>
-
     </div>
 
     <!-- RIGHT: WHITE GALLERY ONLY -->
@@ -367,7 +355,25 @@
       </div>
     </div>
 
-  </div>
+    <!-- ✅ PAYPAL EN PLEINE LARGEUR (entre kits/photos et BOM) -->
+    <div class="card span-full" style="margin-top:0;">
+      <div class="pad">
+        <h2>Commander (France métropolitaine)</h2>
+        <p class="subtitle" style="margin-bottom:10px">
+          Paiement sécurisé PayPal / carte bancaire. Livraison contre signature.
+        </p>
+
+        <div class="paypal-box">
+          <div id="paypal-container-S5HXT5HMRHCS6"></div>
+        </div>
+
+        <p class="note" style="margin-top:12px;text-align:center">
+          🌍 Hors France métropolitaine : utilise le bouton <strong>Demander un devis</strong>.
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /hero -->
 
   <!-- DETAILS -->
   <div class="grid2">
@@ -437,6 +443,18 @@
   function closeLightbox(){
     document.getElementById('lightbox').style.display = 'none';
   }
+</script>
+
+<!-- Render PayPal Hosted Button (hors du grid pour éviter les glitches) -->
+<script>
+  (function renderPaypal(){
+    if (!window.paypal || !paypal.HostedButtons) {
+      return setTimeout(renderPaypal, 60);
+    }
+    paypal.HostedButtons({
+      hostedButtonId: "S5HXT5HMRHCS6",
+    }).render("#paypal-container-S5HXT5HMRHCS6");
+  })();
 </script>
 
 </body>
