@@ -17,6 +17,8 @@
       --line:#243145;
       --cyan:#22d3ee;
       --green:#34d399;
+      --pink:#fb7185;
+      --yellow:#facc15;
       --radius:18px;
       --shadow:0 12px 35px rgba(0,0,0,.45);
     }
@@ -33,6 +35,7 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1150px;margin:auto;padding:28px 18px 70px}
 
+    /* TOP */
     .topbar{
       display:flex;justify-content:space-between;align-items:center;
       margin-bottom:24px;
@@ -46,26 +49,34 @@
       -webkit-text-fill-color:transparent;
     }
     .back{color:var(--muted);font-size:14px}
+    .back:hover{text-decoration:underline;color:var(--text)}
 
+    /* BUTTON */
     .btn{
       display:inline-flex;align-items:center;gap:10px;
       padding:14px 22px;
       border-radius:999px;
       font-weight:900;
+      border:none;
       background:linear-gradient(135deg,var(--cyan),var(--green));
       color:#022c22;
       box-shadow:0 10px 30px rgba(34,211,238,.45);
+      cursor:pointer;
       white-space:nowrap;
     }
+    .btn:hover{filter:brightness(1.1)}
     .btn.alt{
       background:linear-gradient(135deg,#fb7185,#f97316);
       color:#2a0a0a;
+      box-shadow:0 10px 30px rgba(251,113,133,.35);
     }
 
+    /* LAYOUT */
     .hero{
       display:grid;
       grid-template-columns:1.15fr .85fr;
       gap:22px;
+      align-items:start;
     }
     @media(max-width:900px){.hero{grid-template-columns:1fr}}
 
@@ -78,10 +89,11 @@
     }
     .pad{padding:24px}
 
-    h1{font-size:38px;margin:0 0 12px}
+    h1{font-size:38px;margin:0 0 12px;letter-spacing:-.4px}
     h2{font-size:20px;margin:0 0 12px}
-    .subtitle{color:var(--muted);line-height:1.6}
+    .subtitle{color:var(--muted);line-height:1.6;margin-bottom:14px}
 
+    /* BADGES */
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
     .badge{
       padding:7px 14px;
@@ -96,18 +108,119 @@
       border-color:rgba(34,211,238,.5);
       color:#a5f3fc;
     }
+    .badge.stock{
+      background:rgba(251,113,133,.15);
+      border-color:rgba(251,113,133,.4);
+      color:#fecaca;
+    }
 
+    /* PRICEBOX (actions) */
     .pricebox{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:14px;
-      padding:20px;
-      border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px;border-top:1px solid var(--line);
       background:rgba(0,0,0,.25);
+      gap:16px;
       flex-wrap:wrap;
     }
     .note{color:var(--muted);font-size:13px}
+    .actionstack{display:flex;gap:14px;flex-wrap:wrap}
+
+    /* KITS PREVIEW under price */
+    .kits-preview{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      padding:18px 20px 22px;
+      border-top:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(34,211,238,.10), rgba(0,0,0,.15));
+    }
+
+    /* IMAGE CARDS (shared) */
+    .shot{
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+      background:#020617;
+      cursor:zoom-in;
+      transition:transform .2s ease, border-color .2s ease;
+    }
+    .shot:hover{transform:translateY(-2px);border-color:rgba(34,211,238,.55)}
+    .shot img{width:100%;display:block}
+    .cap{
+      padding:8px 10px;
+      font-size:13px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      text-align:center;
+    }
+
+    /* RIGHT GALLERY (white only) */
+    .gallery{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    /* ADVANTAGES */
+    .advantages{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      margin-top:20px;
+    }
+    @media(max-width:900px){.advantages{grid-template-columns:1fr}}
+    .adv{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+      background:linear-gradient(180deg, rgba(34,211,238,.12), rgba(34,211,238,.04));
+    }
+    .adv h3{margin:0 0 6px;font-size:16px}
+    .adv p{margin:0;color:var(--muted);line-height:1.5}
+
+    /* DETAILS */
+    .grid2{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;
+    }
+    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+    ul{padding-left:18px;line-height:1.7;margin:0}
+
+    .callout{
+      margin-top:14px;
+      border:1px dashed rgba(250,204,21,.5);
+      background:rgba(250,204,21,.1);
+      padding:14px;
+      border-radius:14px;
+      color:#fde68a;
+      font-weight:600;
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:28px;
+      line-height:1.6;
+    }
+
+    /* LIGHTBOX */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+      cursor:zoom-out;
+      padding:20px;
+    }
+    .lightbox img{
+      max-width:92%;
+      max-height:92%;
+      border-radius:16px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+    }
   </style>
 </head>
 
@@ -121,48 +234,174 @@
 
   <div class="hero">
 
+    <!-- LEFT: PRODUCT -->
     <div class="card">
       <div class="pad">
         <h1>Spinbird Ø200mm – Drone Soccer</h1>
 
         <p class="subtitle">
-          Drone Soccer <strong>robuste</strong> et <strong>léger</strong>,
-          idéal pour le loisir, l’entraînement et la compétition.<br>
-          Compatible <strong>FAI F9A-B</strong>.
+          Drone Soccer <strong>très robuste</strong> et <strong>léger</strong>,
+          idéal pour le <strong>loisir</strong>, l’<strong>entraînement</strong> et la
+          <strong>compétition</strong>.<br>
+          Compatible avec le <strong>règlement FAI F9A-B</strong>.
         </p>
 
         <div class="badges">
           <div class="badge highlight">Ø200 mm</div>
-          <div class="badge">Carbone 3 mm</div>
+          <div class="badge">Frame carbone 3 mm</div>
+          <div class="badge">Support LiPo 2 mm</div>
           <div class="badge highlight">Support LED inclus</div>
+          <div class="badge stock">Stock limité</div>
+        </div>
+
+        <div class="advantages">
+          <div class="adv">
+            <h3>Robustesse</h3>
+            <p>Conçu pour encaisser les chocs répétés en entraînement comme en match.</p>
+          </div>
+          <div class="adv">
+            <h3>Légèreté</h3>
+            <p>Poids optimisé pour une meilleure autonomie et une consommation réduite.</p>
+          </div>
+          <div class="adv">
+            <h3>Polyvalence</h3>
+            <p>Parfait pour la pratique loisir comme pour la compétition officielle.</p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>Pré-requis d’assemblage :</strong><br>
+          Un <strong>petit décapeur thermique</strong> est recommandé pour rétracter
+          la <strong>gaine thermorétractable</strong>.
         </div>
       </div>
 
+      <!-- ACTIONS (no price shown) -->
       <div class="pricebox">
         <div class="note">
-          🇫🇷 Vente directe France métropolitaine (livraison contre signature)<br>
-          🌍 International / clubs : devis obligatoire
+          🇫🇷 Vente directe uniquement pour la <strong>France métropolitaine</strong> (livraison contre signature).<br>
+          🌍 Pour l’international, clubs ou commandes groupées : <strong>devis obligatoire</strong>.
         </div>
 
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn" href="https://paypal.me/Dronatronic/93">
+        <div class="actionstack">
+          <!-- FRANCE: direct payment (85€ + 8€ shipping = 93€) -->
+          <a class="btn" href="https://paypal.me/Dronatronic/93" title="Commander (France métropolitaine)">
             🛒 Commander (France)
           </a>
 
+          <!-- INTERNATIONAL: quote by email -->
           <a class="btn alt"
-             href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)">
-            📩 Demander un devis
+             href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20pour%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0APays%20:%0AQuantité%20:%0AClub%20/Entreprise%20:%0AAdresse%20de%20livraison%20:%0A%0AMerci.%0A">
+            📩 Demander un devis (Hors France)
           </a>
+        </div>
+      </div>
+
+      <!-- Kits images under actions -->
+      <div class="kits-preview">
+        <div class="shot" onclick="openLightbox('images/blue.png')">
+          <img src="images/blue.png" alt="Kit bleu">
+          <div class="cap">Kit bleu</div>
+        </div>
+
+        <div class="shot" onclick="openLightbox('images/red.png')">
+          <img src="images/red.png" alt="Kit rouge">
+          <div class="cap">Kit rouge</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: WHITE GALLERY ONLY -->
+    <div class="card">
+      <div class="pad">
+        <h2>Photos (drone assemblé)</h2>
+        <p class="subtitle">Clique sur une photo pour l’ouvrir en grand.</p>
+
+        <div class="gallery">
+          <div class="shot" onclick="openLightbox('images/white.png')">
+            <img src="images/white.png" alt="Drone assemblé">
+            <div class="cap">Drone assemblé</div>
+          </div>
+
+          <div class="shot" onclick="openLightbox('images/white1.png')">
+            <img src="images/white1.png" alt="Drone assemblé – vue détaillée 1">
+            <div class="cap">Vue détaillée</div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <div class="footer" style="margin-top:30px;text-align:center;color:#a7b0c0;font-size:13px">
-    © Dronatronic — Drone Soccer & DS Scoreboard
+  <!-- DETAILS -->
+  <div class="grid2">
+    <div class="card">
+      <div class="pad">
+        <h2>Contenu détaillé du kit (BOM)</h2>
+        <ul>
+          <li>1 × Sphère Ø200 mm composée de <strong>12 pentagones</strong></li>
+          <li>1 × Frame principale en <strong>carbone t300 3 mm</strong></li>
+          <li>1 × Support LiPo en <strong>carbone t300 2 mm</strong></li>
+
+          <li>4 × Entretoises <strong>M2 longueur 16mm</strong></li>
+          <li>8 × Vis tête fraisée <strong>M2 × 8</strong></li>
+
+          <li>5 × Supports TPU (fixation frame / pentagones)</li>
+          <li>5 × Vis tête bombée <strong>M2 × 10</strong></li>
+          <li>5 × Rondelles <strong>M2</strong></li>
+          <li>5 × Écrous nylstop<strong>M2</strong></li>
+
+          <li>30 × Joncs carbone <strong>2,5 × 18mm</strong></li>
+          <li>30 × Gaines thermorétractables <strong>rouge ou bleu</strong> – <strong>Ø6,4</strong> – longueur ~<strong>18 mm</strong></li>
+
+          <li>1 × Support LED en <strong>PLA ST</strong></li>
+          <li>1 × Bande adhésive double-face (fixation support LED - à découper)</li>
+
+          <li><strong>Strap LiPo offert</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <h2>Assemblage</h2>
+        <p class="subtitle">
+          Assemblage de la sphère par <strong>jonc carbone</strong> et
+          <strong>gaine thermorétractable</strong>.
+        </p>
+        <ul>
+          <li>Montage robuste et durable</li>
+          <li>Maintenance facilitée</li>
+          <li>Adapté à un usage intensif en club</li>
+          <li>Un <strong>petit décapeur thermique</strong> est recommandé</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    © Dronatronic — Drone Soccer & DS Scoreboard<br>
+    Solutions clubs : drones, buts LED, scoreboard, écrans & OBS.
   </div>
 
 </div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src){
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lb.style.display = 'flex';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
 </body>
 </html>
