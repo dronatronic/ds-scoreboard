@@ -33,7 +33,6 @@
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1150px;margin:auto;padding:28px 18px 70px}
 
-    /* TOP */
     .topbar{
       display:flex;justify-content:space-between;align-items:center;
       margin-bottom:24px;
@@ -49,7 +48,6 @@
     .back{color:var(--muted);font-size:14px}
     .back:hover{text-decoration:underline;color:var(--text)}
 
-    /* BUTTONS */
     .btn{
       display:inline-flex;align-items:center;gap:10px;
       padding:14px 22px;
@@ -59,11 +57,8 @@
       background:linear-gradient(135deg,var(--cyan),var(--green));
       color:#022c22;
       box-shadow:0 10px 30px rgba(34,211,238,.45);
-      cursor:pointer;
     }
-    .btn:hover{filter:brightness(1.1)}
 
-    /* LAYOUT */
     .hero{
       display:grid;
       grid-template-columns:1.15fr .85fr;
@@ -80,22 +75,10 @@
     }
     .pad{padding:24px}
 
-    h1{
-      font-size:38px;
-      margin:0 0 12px;
-      letter-spacing:-.4px;
-    }
-    h2{
-      font-size:20px;
-      margin:0 0 12px;
-    }
-    .subtitle{
-      color:var(--muted);
-      line-height:1.6;
-      margin-bottom:14px;
-    }
+    h1{font-size:38px;margin:0 0 12px}
+    h2{font-size:20px;margin:0 0 12px}
+    .subtitle{color:var(--muted);line-height:1.6;margin-bottom:14px}
 
-    /* BADGES */
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
     .badge{
       padding:7px 14px;
@@ -116,22 +99,6 @@
       color:#fecaca;
     }
 
-    /* SPECS */
-    .specs{
-      display:grid;grid-template-columns:1fr 1fr;gap:14px;
-      margin-top:10px;
-    }
-    @media(max-width:520px){.specs{grid-template-columns:1fr}}
-    .spec{
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      background:rgba(255,255,255,.04);
-    }
-    .spec .k{font-size:12px;color:var(--muted)}
-    .spec .v{font-weight:900;font-size:15px}
-
-    /* PRICE */
     .pricebox{
       display:flex;justify-content:space-between;align-items:center;
       padding:20px;border-top:1px solid var(--line);
@@ -147,24 +114,19 @@
     }
     .note{color:var(--muted);font-size:13px}
 
-    /* GALLERY */
     .gallery{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:14px;
     }
-    .gallery .large{
-      grid-column:1 / -1;
-    }
+    .gallery .large{grid-column:1 / -1}
     .shot{
       border:1px solid var(--line);
       border-radius:16px;
       overflow:hidden;
       background:#020617;
       cursor:zoom-in;
-      transition:transform .2s ease;
     }
-    .shot:hover{transform:scale(1.02)}
     .shot img{width:100%;display:block}
     .cap{
       padding:8px 10px;
@@ -173,39 +135,12 @@
       border-top:1px solid var(--line);
     }
 
-    /* ADVANTAGES */
-    .advantages{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-      margin-top:20px;
-    }
-    @media(max-width:900px){.advantages{grid-template-columns:1fr}}
-    .adv{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:16px;
-      background:linear-gradient(180deg, rgba(34,211,238,.12), rgba(34,211,238,.04));
-    }
-    .adv h3{margin:0 0 6px;font-size:16px}
-    .adv p{margin:0;color:var(--muted);line-height:1.5}
-
-    /* DETAILS */
     .grid2{
       display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;
     }
     @media(max-width:900px){.grid2{grid-template-columns:1fr}}
-    ul{padding-left:18px;line-height:1.7;margin:0}
 
-    .callout{
-      margin-top:14px;
-      border:1px dashed rgba(250,204,21,.5);
-      background:rgba(250,204,21,.1);
-      padding:14px;
-      border-radius:14px;
-      color:#fde68a;
-      font-weight:600;
-    }
+    ul{padding-left:18px;line-height:1.7;margin:0}
 
     .footer{
       text-align:center;
@@ -213,24 +148,6 @@
       font-size:13px;
       margin-top:28px;
       line-height:1.6;
-    }
-
-    /* LIGHTBOX */
-    .lightbox{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.85);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:999;
-      cursor:zoom-out;
-    }
-    .lightbox img{
-      max-width:92%;
-      max-height:92%;
-      border-radius:16px;
-      box-shadow:0 20px 60px rgba(0,0,0,.6);
     }
   </style>
 </head>
@@ -245,7 +162,7 @@
 
   <div class="hero">
 
-    <!-- PRODUCT -->
+    <!-- PRODUIT -->
     <div class="card">
       <div class="pad">
         <h1>Spinbird Ø200mm – Drone Soccer</h1>
@@ -265,96 +182,87 @@
           <div class="badge stock">Stock limité</div>
         </div>
 
-        <div class="specs">
-          <div class="spec">
-            <div class="k">Poids sans LiPo</div>
-            <div class="v">167,5 g</div>
+        <div class="pricebox">
+          <div>
+            <div class="price">85 €</div>
+            <div class="note">Frais de port non inclus</div>
           </div>
-          <div class="spec">
-            <div class="k">Poids avec LiPo Bonka 4S 650 mAh 150C</div>
-            <div class="v">248,9 g</div>
-          </div>
-          <div class="spec">
-            <div class="k">Couleurs disponibles</div>
-            <div class="v">Rouge / Bleu</div>
-          </div>
-          <div class="spec">
-            <div class="k">Assemblage sphère</div>
-            <div class="v">Jonc carbone + gaine thermorétractable</div>
-          </div>
+          <a class="btn"
+             href="mailto:dronatronic@gmail.com?subject=Commande%20Drone%20Soccer%20Spinbird%20Ø200mm">
+            📩 Commander / Devis
+          </a>
         </div>
-
-        <div class="advantages">
-          <div class="adv">
-            <h3>Robustesse</h3>
-            <p>Conçu pour encaisser les chocs répétés en entraînement comme en match.</p>
-          </div>
-          <div class="adv">
-            <h3>Légèreté</h3>
-            <p>Poids optimisé pour une meilleure autonomie et une consommation réduite.</p>
-          </div>
-          <div class="adv">
-            <h3>Polyvalence</h3>
-            <p>Parfait pour la pratique loisir comme pour la compétition officielle.</p>
-          </div>
-        </div>
-
-        <div class="callout">
-          <strong>Pré-requis d’assemblage :</strong><br>
-          Un <strong>petit décapeur thermique</strong> est recommandé pour rétracter
-          la <strong>gaine thermorétractable</strong>.
-        </div>
-      </div>
-
-      <div class="pricebox">
-        <div>
-          <div class="price">85 €</div>
-          <div class="note">Frais de port non inclus</div>
-        </div>
-        <a class="btn"
-           href="mailto:dronatronic@gmail.com?subject=Commande%20Drone%20Soccer%20Spinbird%20Ø200mm">
-          📩 Commander / Devis
-        </a>
       </div>
     </div>
 
-    <!-- GALLERY -->
+    <!-- PHOTOS -->
     <div class="card">
       <div class="pad">
         <h2>Photos</h2>
-        <p class="subtitle">
-          Exemple de drone assemblé (mise en avant), puis kits et détails.
-        </p>
-
         <div class="gallery">
           <div class="shot large" onclick="openLightbox('images/white.png')">
-            <img src="images/white.png" alt="Drone assemblé">
+            <img src="images/white.png">
             <div class="cap">Drone assemblé</div>
           </div>
-
           <div class="shot" onclick="openLightbox('images/white1.png')">
-            <img src="images/white1.png" alt="Drone assemblé – vue 2">
+            <img src="images/white1.png">
             <div class="cap">Vue détaillée</div>
           </div>
-
           <div class="shot" onclick="openLightbox('images/white2.png')">
-            <img src="images/white2.png" alt="Drone assemblé – vue 3">
+            <img src="images/white2.png">
             <div class="cap">Vue détaillée</div>
           </div>
-
           <div class="shot" onclick="openLightbox('images/blue.png')">
-            <img src="images/blue.png" alt="Kit bleu">
+            <img src="images/blue.png">
             <div class="cap">Kit bleu</div>
           </div>
-
           <div class="shot" onclick="openLightbox('images/red.png')">
-            <img src="images/red.png" alt="Kit rouge">
+            <img src="images/red.png">
             <div class="cap">Kit rouge</div>
           </div>
         </div>
       </div>
     </div>
 
+  </div>
+
+  <!-- DÉTAIL DU KIT -->
+  <div class="grid2">
+    <div class="card">
+      <div class="pad">
+        <h2>Contenu détaillé du kit</h2>
+        <ul>
+          <li>1 × Sphère Ø200 mm composée de <strong>12 pentagones</strong></li>
+          <li>1 × Frame principale (life frame) en <strong>carbone 3 mm</strong></li>
+          <li>1 × Support LiPo en <strong>carbone 2 mm</strong></li>
+          <li>4 × Entretoises <strong>M2 × 16</strong></li>
+          <li>8 × Vis FHC <strong>M2 × 8</strong></li>
+          <li>5 × Supports TPU pour fixation frame / sphère</li>
+          <li>5 × Vis tête bombée <strong>TB M2 × 10</strong></li>
+          <li>5 × Rondelles <strong>M2</strong></li>
+          <li>5 × Écrous <strong>M2</strong></li>
+          <li>1 × Support LED en <strong>PLA ST</strong></li>
+          <li>1 × Bande adhésive double-face pour fixation du support LED</li>
+          <li><strong>Strap LiPo offert</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pad">
+        <h2>Assemblage</h2>
+        <p class="subtitle">
+          Assemblage de la sphère par <strong>jonc carbone</strong> et
+          <strong>gaine thermorétractable</strong>.
+        </p>
+        <ul>
+          <li>Montage robuste et durable</li>
+          <li>Maintenance facilitée</li>
+          <li>Adapté à un usage intensif en club</li>
+          <li>Un <strong>petit décapeur thermique</strong> est recommandé</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="footer">
@@ -365,19 +273,14 @@
 </div>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" alt="">
+<div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+  <img id="lightbox-img">
 </div>
 
 <script>
   function openLightbox(src){
-    const lb = document.getElementById('lightbox');
-    const img = document.getElementById('lightbox-img');
-    img.src = src;
-    lb.style.display = 'flex';
-  }
-  function closeLightbox(){
-    document.getElementById('lightbox').style.display = 'none';
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
   }
 </script>
 
