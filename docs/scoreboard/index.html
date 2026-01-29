@@ -1,1 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>DS Scoreboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<style>
+:root{
+  --bg:#0f1115;
+  --text:#e9eef7;
+  --muted:rgba(233,238,247,.72);
+  --border:rgba(255,255,255,.10);
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --accent:#4fc3ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(0,170,255,.18), transparent 60%),
+    radial-gradient(1000px 500px at 90% 0%, rgba(0,255,170,.14), transparent 55%),
+    var(--bg);
+  color:var(--text);
+}
+header{
+  padding:38px 20px 26px;
+  text-align:center;
+}
+.logo{
+  height:92px;
+  width:auto;
+  display:inline-block;
+  margin-bottom:12px;
+}
+h1{margin:0;font-size:3rem;letter-spacing:.4px}
+.sub{
+  max-width:920px;
+  margin:10px auto 0;
+  color:var(--muted);
+  font-size:1.12rem;
+  line-height:1.55;
+}
+.wrap{max-width:1220px;margin:auto;padding:0 20px 60px}
+.section-title{
+  margin:48px 0 14px;
+  font-size:1.6rem;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:1.15rem;
+}
+.card p{color:var(--muted);margin:0;line-height:1.5}
+.small{color:var(--muted);font-size:.95rem;line-height:1.5;margin:10px 0 0}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.btn{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  user-select:none;
+  text-decoration:none;
+  display:inline-block;
+}
+.btn:hover{background:rgba(255,255,255,.08)}
+.btn.active{border-color:var(--accent); box-shadow:0 0 0 3px rgba(79,195,255,.12) inset;}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+.gallery figure{
+  margin:0;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#0b0d12;
+  box-shadow:var(--shadow);
+}
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  display:block;
+  background:#000;
+  cursor:zoom-in;
+}
+.gallery figcaption{
+  padding:10px 12px 12px;
+  color:var(--muted);
+  font-size:.92rem;
+}
+.list{
+  margin:10px 0 0;
+  padding:0 0 0 18px;
+  color:var(--muted);
+  line-height:1.65;
+}
+footer{
+  text-align:center;
+  padding:20px;
+  color:rgba(233,238,247,.55);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.86);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  padding:22px;
+}
+.lightbox.open{display:flex}
+.lightbox-inner{
+  max-width:min(1200px, 96vw);
+  max-height:92vh;
+  width:100%;
+}
+.lightbox-img{
+  width:100%;
+  height:auto;
+  max-height:92vh;
+  object-fit:contain;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 18px 50px rgba(0,0,0,.6);
+}
+.lightbox-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+  color:rgba(233,238,247,.85);
+}
+.lightbox-top .hint{
+  font-size:.95rem;
+  color:rgba(233,238,247,.65);
+}
+.close{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:var(--text);
+  padding:8px 12px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.close:hover{background:rgba(255,255,255,.12)}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img class="logo" src="assets/DS.png" alt="DS Scoreboard Logo">
+  <h1>DS Scoreboard</h1>
+  <div class="sub" data-i18n="hero"></div>
+
+  <div class="nav">
+    <a class="btn" href="#features" data-i18n="nav.features"></a>
+    <a class="btn" href="#fai" data-i18n="nav.fai"></a>
+    <a class="btn" href="#app" data-i18n="nav.app"></a>
+    <a class="btn" href="#obs" data-i18n="nav.obs"></a>
+    <a class="btn" href="#video" data-i18n="nav.video"></a>
+    <a class="btn" href="#pack" data-i18n="nav.pack"></a>
+    <a class="btn" href="#access" data-i18n="nav.access"></a>
+    <a class="btn" href="#contact" data-i18n="nav.contact"></a>
+  </div>
+
+  <div class="nav" style="margin-top:12px">
+    <button class="btn active" id="btnFR">FR</button>
+    <button class="btn" id="btnEN">EN</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2 class="section-title" id="features" data-i18n="features.title"></h2>
+  <div class="grid">
+    <div class="card">
+      <h3 data-i18n="features.event.h"></h3>
+      <p data-i18n="features.event.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.teamsRange.h"></h3>
+      <p data-i18n="features.teamsRange.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.referees.h"></h3>
+      <p data-i18n="features.referees.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.tp.h"></h3>
+      <p data-i18n="features.tp.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.groups.h"></h3>
+      <p data-i18n="features.groups.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.ko.h"></h3>
+      <p data-i18n="features.ko.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.obs.h"></h3>
+      <p data-i18n="features.obs.p"></p>
+    </div>
+
+    <div class="card">
+      <h3 data-i18n="features.goals.h"></h3>
+      <p data-i18n="features.goals.p"></p>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="fai" data-i18n="fai.title"></h2>
+  <div class="card">
+    <p data-i18n="fai.p1"></p>
+    <ul class="list">
+      <li>
+        <span data-i18n="fai.link1label"></span>
+        <a href="https://fai.org/dronesoccer-rules" target="_blank" rel="noopener">fai.org/dronesoccer-rules</a>
+      </li>
+      <li>
+        <span data-i18n="fai.link2label"></span>
+        <a href="https://fai.org/sites/default/files/sc4_vol_f9_dronesport_24.pdf" target="_blank" rel="noopener">Volume F9 Drone Sport (PDF)</a>
+      </li>
+      <li>
+        <span data-i18n="fai.link3label"></span>
+        <a href="https://fai.org/sites/default/files/documents/minutes_annex_7j_-_f9a_drone_soccer_rules.pdf" target="_blank" rel="noopener">F9A Drone Soccer Rules (PDF)</a>
+      </li>
+    </ul>
+    <p class="small" data-i18n="fai.p2"></p>
+  </div>
+
+  <h2 class="section-title" id="app" data-i18n="app.title"></h2>
+  <p class="small" data-i18n="gallery.hint"></p>
+  <div class="gallery" id="appGallery">
+    <figure><img src="screenshots/app/pc-01.png" alt="APP 01"><figcaption>APP 01</figcaption></figure>
+    <figure><img src="screenshots/app/pc-02.png" alt="APP 02"><figcaption>APP 02</figcaption></figure>
+    <figure><img src="screenshots/app/pc-03.png" alt="APP 03"><figcaption>APP 03</figcaption></figure>
+    <figure><img src="screenshots/app/pc-04.png" alt="APP 04"><figcaption>APP 04</figcaption></figure>
+    <figure><img src="screenshots/app/pc-05.png" alt="APP 05"><figcaption>APP 05</figcaption></figure>
+    <figure><img src="screenshots/app/pc-06.png" alt="APP 06"><figcaption>APP 06</figcaption></figure>
+    <figure><img src="screenshots/app/pc-07.png" alt="APP 07"><figcaption>APP 07</figcaption></figure>
+    <figure><img src="screenshots/app/pc-08.png" alt="APP 08"><figcaption>APP 08</figcaption></figure>
+    <figure><img src="screenshots/app/pc-09.png" alt="APP 09"><figcaption>APP 09</figcaption></figure>
+    <figure><img src="screenshots/app/pc-10.png" alt="APP 10"><figcaption>APP 10</figcaption></figure>
+  </div>
+
+  <h2 class="section-title" id="obs" data-i18n="obs.title"></h2>
+  <p class="small" data-i18n="gallery.hint"></p>
+  <div class="gallery" id="obsGallery">
+    <figure><img src="screenshots/obs/obs-01.png" alt="OBS 01"><figcaption>OBS 01</figcaption></figure>
+    <figure><img src="screenshots/obs/obs-02.png" alt="OBS 02"><figcaption>OBS 02</figcaption></figure>
+    <figure><img src="screenshots/obs/obs-03.png" alt="OBS 03"><figcaption>OBS 03</figcaption></figure>
+    <figure><img src="screenshots/obs/obs-04.png" alt="OBS 04"><figcaption>OBS 04</figcaption></figure>
+    <figure><img src="screenshots/obs/obs-05.png" alt="OBS 05"><figcaption>OBS 05</figcaption></figure>
+  </div>
+
+  <h2 class="section-title" id="video" data-i18n="video.title"></h2>
+  <div class="card">
+    <p data-i18n="video.p"></p>
+    <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="btn" href="https://youtu.be/cGTZOFx7O3E" target="_blank" rel="noopener" data-i18n="video.btn"></a>
+      <span class="small" data-i18n="video.note"></span>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="pack" data-i18n="pack.title"></h2>
+  <div class="card">
+    <p data-i18n="pack.p"></p>
+    <ul class="list">
+      <li data-i18n="pack.controllers"></li>
+      <li data-i18n="pack.router"></li>
+      <li data-i18n="pack.psu"></li>
+      <li data-i18n="pack.goals"></li>
+      <li data-i18n="pack.cables"></li>
+      <li data-i18n="pack.usb"></li>
+    </ul>
+  </div>
+
+  <h2 class="section-title" id="access" data-i18n="access.title"></h2>
+  <div class="card">
+    <h3 data-i18n="access.h"></h3>
+    <p data-i18n="access.p"></p>
+  </div>
+
+<h2 class="section-title" id="contact" data-i18n="contact.title"></h2>
+<div class="card">
+  <h3 data-i18n="contact.h"></h3>
+  <p>
+    <span data-i18n="contact.p"></span><br>
+    <a href="mailto:dronatronic@gmail.com">dronatronic@gmail.com</a><br>
+      </p>
+</div>
+
+</div>
+
+<footer>DS Scoreboard — Drone Soccer Competition Platform</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner">
+    <div class="lightbox-top">
+      <div class="hint" id="lbHint"></div>
+      <button class="close" id="lbClose">✕</button>
+    </div>
+    <img class="lightbox-img" id="lbImg" alt="">
+  </div>
+</div>
+
+<script>
+const T = {
+  fr: {
+    "hero": "Plateforme complète de gestion de compétitions <b>Drone Soccer</b> : tournoi, arbitrage, streaming OBS et animations des buts.",
+    "nav.features":"Fonctionnalités",
+    "nav.fai":"Compatibilité FAI",
+    "nav.app":"Screens App",
+    "nav.obs":"Screens OBS",
+    "nav.video":"Vidéo",
+    "nav.pack":"Pack inclus",
+    "nav.access":"Accès",
+    "nav.contact":"Contact",
+
+    "features.title":"Fonctionnalités",
+    "features.event.h":"🏁 Gestion d’événements",
+    "features.event.p":"Gestion de tournoi complète : phases de groupes, qualifications, suivi des matchs et résultats.",
+
+    "features.teamsRange.h":"👥 Gestion de 4 à 24 équipes",
+    "features.teamsRange.p":"Configuration rapide des formats de tournoi de 4 à 24 équipes, avec phases adaptées.",
+
+    "features.referees.h":"🧑‍⚖️ Arbitrage : 3 arbitres",
+    "features.referees.p":"Organisation simple : 2 arbitres de but + 1 arbitre de table. Aucun arbitre supplémentaire nécessaire.",
+
+    "features.tp.h":"👥 Équipes & 🧑‍✈️ Pilotes",
+    "features.tp.p":"Gestion des équipes et des pilotes pour une compétition claire et un affichage propre.",
+
+    "features.groups.h":"🧩 Phase de groupes",
+    "features.groups.p":"Génération, matchs, classement et qualification selon la structure de l’événement.",
+
+    "features.ko.h":"🏆 Phase éliminatoire",
+    "features.ko.p":"Bracket KO : progression, résultats et affichage des phases finales.",
+
+    "features.obs.h":"📺 Streaming via OBS",
+    "features.obs.p":"Overlays dédiés : score, prochain match, break, finales, penalty… prêts pour le live.",
+
+    "features.goals.h":"💡 Animations des buts",
+    "features.goals.p":"Animations LED synchronisées pour renforcer l’expérience en match.",
+
+    "fai.title":"Compatibilité FAI (Drone Soccer F9A / F9A-A / F9A-B)",
+    "fai.p1":"DS Scoreboard est conçu pour être compatible avec les règles FAI (Fédération Aéronautique Internationale) pour le Drone Soccer (catégorie F9A).",
+    "fai.link1label":"Règles Drone Soccer (FAI) : ",
+    "fai.link2label":"FAI Sporting Code — Volume F9 (PDF) : ",
+    "fai.link3label":"F9A Drone Soccer Rules (PDF) : ",
+    "fai.p2":"Les références ci-dessus permettent de consulter les règles officielles, y compris les sous-classes F9A-A et F9A-B.",
+
+    "app.title":"Screenshots — Logiciel (interface PC / arbitrage)",
+    "obs.title":"Screenshots — Overlays OBS (diffusion live)",
+    "gallery.hint":"Clique sur une image pour l’afficher en plein écran.",
+
+    "video.title":"Vidéo de démonstration",
+    "video.p":"Ajoute ici ta vidéo YouTube de présentation (démo terrain / OBS / animations).",
+    "video.btn":"▶️ Ouvrir la vidéo YouTube",
+    "video.note":"()",
+
+    "pack.title":"Pack DS Scoreboard inclus",
+    "pack.p":"Le pack DS Scoreboard inclut tout le nécessaire pour démarrer un événement Drone Soccer :",
+    "pack.controllers":"2 télécommandes (rouge & bleue) rechargeables en USB-C",
+    "pack.router":"1 routeur dédié",
+    "pack.psu":"1 alimentation 220V pour les buts",
+    "pack.goals":"2 buts équipés de LED",
+    "pack.cables":"Câbles pour relier le bloc d’alimentation aux buts",
+    "pack.usb":"1 clé USB avec le logiciel",
+
+    "access.title":"Accès",
+    "access.h":"🔒 Logiciel non téléchargeable publiquement",
+    "access.p":"DS Scoreboard n’est pas disponible en téléchargement public. Il est uniquement disponible à la vente.",
+
+    "contact.title":"Contact",
+    "contact.h":"🌐 Dronatronic",
+    "contact.p":"Pour une démo, un devis ou une intégration événement :",
+
+    "lb.hint":"Astuce : Échap pour fermer • Clic hors image pour fermer"
+  },
+  en: {
+    "hero":"All-in-one <b>Drone Soccer</b> competition platform: tournament management, refereeing, OBS broadcast overlays and goal animations.",
+    "nav.features":"Features",
+    "nav.fai":"FAI compliance",
+    "nav.app":"App screenshots",
+    "nav.obs":"OBS screenshots",
+    "nav.video":"Video",
+    "nav.pack":"Included kit",
+    "nav.access":"Access",
+    "nav.contact":"Contact",
+
+    "features.title":"Features",
+    "features.event.h":"🏁 Event management",
+    "features.event.p":"Complete tournament management: group stages, qualification, match tracking and results.",
+
+    "features.teamsRange.h":"👥 Supports 4 to 24 teams",
+    "features.teamsRange.p":"Fast setup for tournament formats from 4 to 24 teams, with adapted stages.",
+
+    "features.referees.h":"🧑‍⚖️ Refereeing: only 3 referees",
+    "features.referees.p":"Simple setup: 2 goal referees + 1 table referee. No extra staff required.",
+
+    "features.tp.h":"👥 Teams & 🧑‍✈️ Pilots",
+    "features.tp.p":"Team and pilot management for clear competition tracking and clean display.",
+
+    "features.groups.h":"🧩 Group stage",
+    "features.groups.p":"Generation, matches, rankings and qualification based on event structure.",
+
+    "features.ko.h":"🏆 Knockout stage",
+    "features.ko.p":"KO bracket: progression, results and finals display.",
+
+    "features.obs.h":"📺 OBS streaming",
+    "features.obs.p":"Dedicated overlays: score, next match, break, finals, penalty… ready for live production.",
+
+    "features.goals.h":"💡 Goal animations",
+    "features.goals.p":"Synchronized LED effects to enhance match experience.",
+
+    "fai.title":"FAI compliance (Drone Soccer F9A / F9A-A / F9A-B)",
+    "fai.p1":"DS Scoreboard is designed to be compatible with FAI Drone Soccer rules (F9A).",
+    "fai.link1label":"FAI Drone Soccer rules : ",
+    "fai.link2label":"FAI Sporting Code — Volume F9 (PDF) : ",
+    "fai.link3label":"F9A Drone Soccer Rules (PDF) : ",
+    "fai.p2":"The references above provide the official rules, including F9A-A and F9A-B subclasses.",
+
+    "app.title":"Screenshots — Software (PC / refereeing interface)",
+    "obs.title":"Screenshots — OBS overlays (live broadcast)",
+    "gallery.hint":"Click an image to view it fullscreen.",
+
+    "video.title":"Demo video",
+    "video.p":"Add your YouTube presentation video here (field demo / OBS / animations).",
+    "video.btn":"▶️ Open YouTube video",
+    "video.note":"(Replace YOUR_VIDEO_ID in the link.)",
+
+    "pack.title":"DS Scoreboard kit included",
+    "pack.p":"The DS Scoreboard kit includes everything you need to start a Drone Soccer event:",
+    "pack.controllers":"2 controllers (red & blue), USB-C rechargeable",
+    "pack.router":"1 dedicated router",
+    "pack.psu":"1 × 220V power supply for the goals",
+    "pack.goals":"2 LED goals",
+    "pack.cables":"Cables to connect the power supply to the goals",
+    "pack.usb":"1 USB drive with the software",
+
+    "access.title":"Access",
+    "access.h":"🔒 Not publicly downloadable",
+    "access.p":"DS Scoreboard is not available for public download. It is available for purchase only.",
+
+    "contact.title":"Contact",
+    "contact.h":"🌐 Dronatronic",
+    "contact.p":"For a demo, a quote or event integration:",
+
+    "lb.hint":"Tip: ESC to close • Click outside the image to close"
+  }
+};
+
+function applyLang(lang){
+  document.documentElement.lang = (lang === "en") ? "en" : "fr";
+  localStorage.setItem("ds_lang", lang);
+
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    const val = T[lang]?.[key];
+    if (val) el.innerHTML = val;
+  });
+
+  document.getElementById("btnFR").classList.toggle("active", lang==="fr");
+  document.getElementById("btnEN").classList.toggle("active", lang==="en");
+
+  document.getElementById("lbHint").textContent = T[lang]["lb.hint"];
+}
+
+document.getElementById("btnFR").onclick = ()=>applyLang("fr");
+document.getElementById("btnEN").onclick = ()=>applyLang("en");
+applyLang(localStorage.getItem("ds_lang") || "fr");
+
+/* Lightbox */
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+const lbClose = document.getElementById("lbClose");
+
+function openLightbox(src, alt){
+  lbImg.src = src;
+  lbImg.alt = alt || "";
+  lb.classList.add("open");
+  lb.setAttribute("aria-hidden","false");
+}
+function closeLightbox(){
+  lb.classList.remove("open");
+  lb.setAttribute("aria-hidden","true");
+  lbImg.src = "";
+}
+document.querySelectorAll(".gallery img").forEach(img=>{
+  img.addEventListener("click", ()=>openLightbox(img.getAttribute("src"), img.getAttribute("alt")));
+});
+lbClose.addEventListener("click", closeLightbox);
+lb.addEventListener("click", (e)=>{
+  if (e.target === lb) closeLightbox();
+});
+document.addEventListener("keydown", (e)=>{
+  if (e.key === "Escape" && lb.classList.contains("open")) closeLightbox();
+});
+</script>
+
+</body>
+</html>
