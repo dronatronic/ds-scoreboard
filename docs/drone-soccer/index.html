@@ -21,6 +21,9 @@
       --green:#34d399;
       --radius:18px;
       --shadow:0 12px 35px rgba(0,0,0,.45);
+
+      /* ✅ Hauteur commune des 2 cards (desktop) */
+      --topCardMinH: 590px;
     }
     *{box-sizing:border-box}
     body{
@@ -33,6 +36,8 @@
       color:var(--text);
     }
     a{color:inherit;text-decoration:none}
+    a.link{color:#a5f3fc;text-decoration:underline;text-underline-offset:2px}
+    a.link:hover{filter:brightness(1.15)}
     .wrap{
       width:min(1150px, calc(100% - 36px));
       margin:0 auto;
@@ -55,9 +60,9 @@
     .back{color:var(--muted);font-size:14px}
     .back:hover{text-decoration:underline;color:var(--text)}
 
-    /* PAGE TITLE (au dessus des 2 cards) */
+    /* PAGE TITLE */
     .page-title{
-      margin:0 0 14px;
+      margin:0 0 12px;
       font-size:40px;
       font-weight:950;
       letter-spacing:-.6px;
@@ -89,55 +94,55 @@
       padding:14px 18px;
       border-radius:999px;
       font-weight:900;
-      border:none;
+      border:1px solid transparent;
       background:linear-gradient(135deg,var(--cyan),var(--green));
       color:#022c22;
-      box-shadow:0 10px 30px rgba(34,211,238,.35);
+      box-shadow:0 10px 30px rgba(34,211,238,.28);
       cursor:pointer;
       white-space:nowrap;
     }
     .btn:hover{filter:brightness(1.08)}
-    /* Style A (outline) */
+    /* ✅ bouton “devis” plus joli (style pro) */
     .btn-outline{
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: none;
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      border:1px solid rgba(34,211,238,.35);
+      box-shadow:none;
     }
     .btn-outline:hover{
-      border-color: var(--cyan);
-      color: #a5f3fc;
-      background: rgba(34,211,238,.08);
+      border-color:rgba(34,211,238,.75);
+      background:rgba(34,211,238,.08);
       filter:none;
     }
 
-    /* ✅ LAYOUT 2 CARDS (PayPal / Photos) - mêmes hauteurs */
+    /* ✅ TOP GRID */
     .top-grid{
       display:grid;
       grid-template-columns: 1fr 1.1fr;
       gap:22px;
-      align-items:stretch;   /* <-- important: même hauteur */
+      align-items:stretch;
     }
     @media(max-width:950px){
       .top-grid{grid-template-columns:1fr}
     }
-    /* Les cards de la grille prennent toute la hauteur */
+
+    /* ✅ même hauteur desktop */
     .top-grid > .card{
+      min-height: var(--topCardMinH);
       height:100%;
       display:flex;
       flex-direction:column;
-      min-height: 560px; /* ajuste si tu veux plus/moins haut */
     }
     @media(max-width:950px){
       .top-grid > .card{min-height:auto}
     }
 
-    /* PayPal card internals */
+    /* PayPal */
     .paypal-body{
       display:flex;
       flex-direction:column;
       gap:14px;
-      flex:1; /* pousse le contenu pour remplir la hauteur */
+      flex:1;
     }
     .paypal-actions{
       display:flex;
@@ -147,13 +152,13 @@
       margin-top:6px;
     }
 
-    /* PayPal container size (avoid vertical letters) */
+    /* PayPal container */
     #paypal-container-S5HXT5HMRHCS6{min-width:320px}
     @media(max-width:420px){
       #paypal-container-S5HXT5HMRHCS6{min-width:260px}
     }
 
-    /* RIGHT gallery */
+    /* Gallery */
     .viewer{
       padding:18px;
       display:flex;
@@ -169,7 +174,7 @@
     }
     .main-shot img{
       width:100%;
-      height:440px;
+      height:460px;
       object-fit:contain;
       display:block;
     }
@@ -221,7 +226,7 @@
       color:var(--muted);
       font-size:13px;
       margin-top:28px;
-      line-height:1.6;
+      line-height:1.7;
     }
 
     /* LIGHTBOX */
@@ -253,20 +258,21 @@
     <div class="brand">DRONATRONIC</div>
   </div>
 
-  <!-- ✅ TITRE AU DESSUS DES 2 CARDS -->
+  <!-- ✅ TITRE AU DESSUS -->
   <h1 class="page-title">Spinbird Ø200mm – Drone Soccer</h1>
   <p class="page-subtitle">
     Drone Soccer <strong>très robuste</strong> et <strong>léger</strong>, idéal pour le <strong>loisir</strong>,
     l’<strong>entraînement</strong> et la <strong>compétition</strong>.
   </p>
 
-  <!-- ✅ 2 CARDS: PayPal (gauche) / Photos (droite) -->
+  <!-- ✅ 2 CARDS -->
   <div class="top-grid">
 
-    <!-- PAYPAL CARD (même hauteur que photos) -->
+    <!-- PAYPAL -->
     <div class="card">
       <div class="pad">
         <h2>Commander (France métropolitaine)</h2>
+
         <div class="paypal-body">
           <p class="note">
             Paiement sécurisé PayPal / carte bancaire. Livraison contre signature (France métropolitaine).
@@ -276,9 +282,14 @@
             <div id="paypal-container-S5HXT5HMRHCS6"></div>
           </div>
 
+          <p class="note">
+            En cliquant sur « Commander », vous acceptez les
+            <a class="link" href="cgv.html">Conditions Générales de Vente</a>.
+          </p>
+
           <div class="paypal-actions">
             <a class="btn btn-outline"
-              href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20pour%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0APays%20:%0AQuantité%20:%0AClub%20/Entreprise%20:%0AAdresse%20de%20livraison%20:%0A%0AMerci.%0A">
+               href="mailto:dronatronic@gmail.com?subject=Devis%20Drone%20Soccer%20Spinbird%20Ø200mm%20(Hors%20France)&body=Bonjour,%0A%0AJe%20souhaite%20un%20devis%20pour%20un%20Drone%20Soccer%20Spinbird%20Ø200mm.%0A%0APays%20:%0AQuantité%20:%0AClub%20/Entreprise%20:%0AAdresse%20de%20livraison%20:%0A%0AMerci.%0A">
               📩 Demander un devis (Hors France)
             </a>
           </div>
@@ -290,7 +301,7 @@
       </div>
     </div>
 
-    <!-- PHOTOS CARD -->
+    <!-- PHOTOS -->
     <div class="card">
       <div class="viewer">
         <div class="main-shot" onclick="openLightbox(document.getElementById('mainImage').src)">
@@ -363,7 +374,9 @@
 
   <div class="footer">
     © Dronatronic — Drone Soccer & DS Scoreboard<br>
-    Solutions clubs : drones, buts LED, scoreboard, écrans & OBS.
+    <a class="link" href="cgv.html">Conditions Générales de Vente</a> ·
+    <a class="link" href="mentions-legales.html">Mentions légales</a><br>
+    Contact : <a class="link" href="mailto:dronatronic@gmail.com">dronatronic@gmail.com</a>
   </div>
 
 </div>
