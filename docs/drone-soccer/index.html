@@ -12,6 +12,71 @@
   </script>
 
   <style>
+    /* NAV (commun) */
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(2,6,23,.72), rgba(2,6,23,.35));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.navbar-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:12px 14px;
+}
+
+.nav-brand{
+  font-weight:900;
+  letter-spacing:.4px;
+  font-size:14px;
+  white-space:nowrap;
+}
+
+.nav-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.nav-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  color: inherit;
+  text-decoration:none;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.nav-link:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(34,211,238,.55);
+}
+
+.nav-link.active{
+  border-color: rgba(34,211,238,.85);
+  box-shadow: 0 0 0 3px rgba(34,211,238,.14) inset;
+}
+
+@media (max-width:520px){
+  .navbar-inner{flex-direction:column; align-items:stretch}
+  .nav-links{justify-content:center}
+}
+
     :root{
       --bg:#0b0e14;
       --text:#e5e7eb;
@@ -251,6 +316,17 @@
 </head>
 
 <body>
+  <nav class="navbar" aria-label="Navigation">
+  <div class="navbar-inner">
+    <div class="nav-brand">DRONATRONIC</div>
+    <div class="nav-links">
+      <a class="nav-link" href="../">🏠 Accueil</a>
+      <a class="nav-link active" href="./">🖥️ DS Scoreboard</a>
+      <a class="nav-link" href="../drone-soccer/">⚽ Drone Soccer</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <div class="topbar">
