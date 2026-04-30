@@ -1,44 +1,73 @@
+# 🏁 DS Scoreboard — Changelog
 
-# DS Scoreboard — Changelog
+## 3.1.0 - 2026-04-30
 
-## 3.0.0 - 2026-04-21
-### Ajouté
-- Ajout d’une page `referee.html` dédiée aux juges de but
-- Affichage des résultats en temps réel sur la page referee
-- Possibilité pour les juges d’ajouter des pénalités en direct
+### ➕ Ajouts
+- Nouvelle page **Stats Timeline** (`stats-timeline.html`)
+- Graphiques des buts par période (0 → 3 min)
+- Analyse du rythme du match
+- Répartition côté rouge / bleu
+- Tracking des buts en temps réel (`goal_events.json`)
+- Indicateurs :
+  - Temps moyen entre 2 buts
+  - Moment du premier but
+  - % de buts en fin de match
+- Menu **Special** (Referee, Admin, Stats, WiFi)
 
-### Modifié
-- Refonte du bouton pause :
-  - possibilité de terminer la pause manuellement avant la fin du chrono
-  - remplacement de l’action par **"Fin de pause"**
+### 🔄 Modifications
+- Interface des statistiques améliorée (plus lisible)
+- Menu uniformisé sur toutes les pages
+- Ouverture des outils dans un nouvel onglet
 
 ---
-## 2.1.2
-- Ajout d'animation des buts (fin de set, fin de match, pause)
-- ajout d'overlays sur le scoreboard
 
+## 3.0.0 - 2026-04-21
+
+### ➕ Ajouts
+- Page `referee.html` pour les juges
+- Résultats en temps réel
+- Ajout des pénalités en direct
+
+### 🔄 Modifications
+- Bouton pause amélioré :
+  - arrêt manuel possible
+  - remplacé par **Fin de pause**
+
+---
+
+## 2.1.2
+- Animations des buts et des phases de jeu
+- Ajout d’overlays sur le scoreboard
+
+---
 
 ## 2.0
-- Ajout gestion des pilotes
-- Ajout pénalités, sanctions et cartons
-- Nouveaux overlays OBS (break, golden goal, finale, penalty, cards, audio)
-- Import OBS prêt à l’emploi
-- Enrichissement du système multi-langue
-- Nouvelles données (events, pilots, penalties, cards, settings)
+- Gestion des pilotes
+- Pénalités, sanctions et cartons
+- Overlays OBS complets
+- Système multi-langue enrichi
 
 ---
 
 ## 1.2.0
-- Centralisation des overlays OBS dans public/
+- Centralisation des overlays OBS
 - Nouveaux overlays groupes et bracket
-- Endpoints serveur dédiés au broadcast OBS
 - Amélioration du chrono scoreboard
-- Nettoyage et réorganisation du projet
 
 ---
 
 ## 1.1.2
-- Gestion complète tournoi (groupes + KO)
+- Gestion complète du tournoi
 - Scoreboard arbitre
 - Overlays OBS de base
 - Système multi-langue initial
+
+---
+
+## 1.0.0 - 2025
+
+### 🎉 Première version
+- Scoreboard de base
+- Gestion simple des scores
+- Interface web initiale
+- Premiers tests en conditions réelles
